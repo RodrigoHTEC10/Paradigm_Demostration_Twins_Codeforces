@@ -33,8 +33,22 @@ split_to_ints(S, I):-
 count([],R,R).
 
 count([H|T],C,R):-
+    range(H, Y),
+    Y =:= 1,
     S is C + 1,
-    count(T,S,R).
+    count(T,S,R);
+    R = 0.
+
+
+% range 
+% Function responsible for checking if the values of the inputs fit within 
+% the designed range.
+
+range(R, T):-
+    R >= 1,
+    R =< 100,
+    T = 1;
+    T = 0.
 
 
 % verify_count
@@ -161,6 +175,8 @@ main(F) :-
     read_line_to_string(current_input, N),
     read_line_to_string(current_input, LS),
     number_string(M, N),
+    range(M,U),
+    U =:= 1,
     split_to_ints(LS, I),
     verify_count(I,M,R),
     R=:=1,

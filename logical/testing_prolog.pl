@@ -1,5 +1,15 @@
+% Author: Rodrigo Alejandro Hurtado Cortes
+% Title: Prolog Testing File
+% Date: May 18th,2026
 
+
+% Import of the prolog_solution file.
 :- ["prolog_solution"].
+
+% Design of a function for testing the actual solution.
+% The usage of Stream, set_input, opening and closing strings
+% is due to simulate the actual user input as the design of the
+% function requires this input structure.
 
 run_test(Input, Expected) :-
     open_string(Input, Stream),
@@ -13,6 +23,9 @@ run_test(Input, Expected) :-
     writeln(Input);
     writeln('FAIL'),
     writeln(Input)).
+
+% Testing function with all available testing cases using the
+% run_test function.
 
 test :-
     run_test("2\n3 3\n", 2),
