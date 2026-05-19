@@ -11,7 +11,8 @@
   ;; x = number of elements in the second line
   ;; n m ... t = list of numbers
 
-
+;;The program must return an int: F
+  ;;F = minimum number of coins to take to have slightly more than the remaining coins.
 
 #lang racket
 
@@ -28,10 +29,10 @@
 (define (number list n count)
   (cond
     [(empty? list) (cond
-                     [(= count n) true]
-                     [else false]
-                     )
-                   ]
+                    [(= count n) true]
+                    [else false]
+                    )
+                  ]
     [(in-range (first list)) (number (rest list) n (+ count 1))]
     [else false]
     )
@@ -148,9 +149,9 @@
 ;;   the given lists a and b.
 
 (define (append_lists a b)
- (cond [(empty? a) b]
-       [else (cons (first a) (append (rest a) b))]
-       )
+  (cond [(empty? a) b]
+        [else (cons (first a) (append (rest a) b))]
+        )
   ) 
 
 
@@ -162,9 +163,9 @@
   (cond
     [(empty? list) list]
     [else (append_lists (append_lists
-           (quick-sort (larger-items list (first list)))
-           (equal-items list (first list)))
-           (quick-sort (lesser-items list (first list))))]
+          (quick-sort (larger-items list (first list)))
+          (equal-items list (first list)))
+          (quick-sort (lesser-items list (first list))))]
     )
   )
 
@@ -206,10 +207,10 @@
 
 (define (coins-aux list number list1)
   (cond
-       [(empty? list) number]
-       [(> (sum-list list1) (sum-list list)) number]
-       [else (coins-aux (rest list) (+ number 1) (cons (first list) list1))]
-       )
+      [(empty? list) number]
+      [(> (sum-list list1) (sum-list list)) number]
+      [else (coins-aux (rest list) (+ number 1) (cons (first list) list1))]
+      )
   )
 
 ;; ===========================================================
@@ -217,7 +218,10 @@
 ;; -------------------- Program --------------------
 
 (define (main)
+  ;;Obtention of line 1. Number x
   (define n (read-line))
+
+  ;;Obtention of line 2. List of coins
   (define list-text (read-line))
 
   ;;Conversion of input x to number
@@ -230,5 +234,6 @@
   (coins list num)
 )
 
+;;Actual usage of the main function
 (module+ main
   (main))
