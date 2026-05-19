@@ -1,4 +1,27 @@
+% Author: Rodrigo Alejandro Hurtado Cortes
+% Title: Logical paradigm: Twins Codeforces 160A
+% Date: May 18th, 2026
 
+
+
+% -------------------- Input Obtention Declaration --------------------
+
+split_to_ints(S, I):-
+    split_string(S, " ", " ", P),
+    maplist(number_string, I, P).
+
+count([],R,R).
+
+count([H|T],C,R):-
+    S is C + 1,
+    count(T,S,R).
+
+
+verify_count(L, N, R):-
+    count(L,0,Z),
+    Z=:=N,
+    R = 1;
+    R = 0.
 
 % -------------------- Sort Declaration --------------------
 
@@ -90,4 +113,14 @@ coins_aux(V, [H|T], C, N):-
     Y is C + 1,
     coins_aux([H|V],T,Y,N).
 
+% --------------------------- Program ---------------------------
 
+main(F) :-
+    read_line_to_string(user_input, N),
+    read_line_to_string(user_input, LS),
+    number_string(M, N),
+    split_to_ints(LS, I),
+    verify_count(I,M,R),
+    R=:=1,
+    coins(I,F);
+    F = 0.
