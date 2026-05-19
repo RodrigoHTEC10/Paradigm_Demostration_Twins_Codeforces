@@ -2,6 +2,17 @@
 ;;Title: Functional paradigm: Twins Codeforces 160A
 ;;Date: May 18th,2026
 
+;;Input obtention.
+  ;; Input form:
+  ;; x
+  ;; n m ... t
+
+;; Where:
+  ;; x = number of elements in the second line
+  ;; n m ... t = list of numbers
+
+
+
 #lang racket
 
 (provide main)
@@ -206,17 +217,6 @@
 ;; -------------------- Program --------------------
 
 (define (main)
-  ;;Input obtention.
-    ;; Input form:
-    ;; x
-    ;; n m ... t
-
-  ;; Where:
-    ;; x = number of elements in the second line
-    ;; n m ... t = list of numbers
-
-  ;; All given numbers from x to t must be: >=1 and <=100.
-
   (define n (read-line))
   (define list-text (read-line))
 
