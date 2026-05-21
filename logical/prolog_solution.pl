@@ -63,13 +63,6 @@ verify_count(L, N, R):-
 
 % -------------------- Sort Declaration --------------------
 
-% pivoting
-% Auxiliar function responsible for getting three lists
-% greter, smaller and equal.
-
-pivoting(E,H,L,G,Q):-
-    greater_than(E,H,L,G,Q).
-
 
 % invert
 % Auxiliar function to invert the elements of a given list.
@@ -95,8 +88,10 @@ greater_than(X,Y,R,G,Q):-
 greater_than(_,[],R,R,G,G,B,B).
 
 greater_than(X,[H|T],Y,R,J,G,Q,B):-
-        (H>X, greater_than(X,T,[H|Y],R,J,G,Q,B));
-        (X=:=H, greater_than(X,T,Y,R,J,G,[H|Q],B));
+        (H>X, 
+        greater_than(X,T,[H|Y],R,J,G,Q,B));
+        (X=:=H, 
+        greater_than(X,T,Y,R,J,G,[H|Q],B));
         greater_than(X,T,Y,R,[H|J],G,Q,B).
 
 
@@ -117,9 +112,9 @@ append([H|T],L,[H|Res]):-
 quick_sort([],[]).
 
 quick_sort([H|T],X):-
-    pivoting(H,T,Small,Larger,Equal),
-    quick_sort(Small,S1),
-    quick_sort(Larger,S2),
+    greater_than(H,T,Larger,Small,Equal),
+    quick_sort(Larger,S1),
+    quick_sort(Small,S2),
     append(S1,Equal,Z),
     append(Z,[H|S2],X).
 
@@ -129,13 +124,13 @@ quick_sort([H|T],X):-
 % Function responsible for adding up the elements of a given list.
 
 sum_ele(L,R):-
-    sum_ele_aux(L,0,R).
+    sum_ele(L,0,R).
 
-sum_ele_aux([],R,R).
+sum_ele([],R,R).
 
-sum_ele_aux([H|T], A, R):-
+sum_ele([H|T], A, R):-
     S is H+A,
-    sum_ele_aux(T, S, R).
+    sum_ele(T, S, R).
 
 
 % -------------------- Sum Comparison Declaration --------------------

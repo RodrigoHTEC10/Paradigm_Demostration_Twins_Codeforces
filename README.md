@@ -305,6 +305,31 @@ When running the file <code>scheme_solution.rkt</code> the console will display 
 
 Afterwards the program will return the answer and display it in console.
 
+Examples.
+
+**Valid inputs**
+
+```
+Introduce number of coins to enter: E. 3
+8
+Introduce all coins values divided by spaces: E. 5 6 10
+1 5 2 6 3 5 8 2
+3
+```
+
+Only the coins with values 8(1), 6(1) and 5(1) () are enough to be greater than the addition of the remaining coins (5 + 3 + 2 = 10). 
+
+**Invalid inputs**
+
+```
+Introduce number of coins to enter: E. 3
+4
+Introduce all coins values divided by spaces: E. 5 6 10
+5 2 1
+0
+```
+
+
 ### Testing file
 
 When running the file <code>testing_scheme.rkt</code> all test cases will run automatically.
@@ -329,13 +354,149 @@ It is important to notice that as Codeforces only checks actual successful test 
 
 # Logical Paradigm
 
+The Logical Programming Paradigm is focused on the idea of giving more importance to the result the programmer wants to accomplish rather than the actual way of doing it (being in this way described as *declarative*). The intellectual approach behind this paradigm rests on the techniques developed by logicians to form valid conclusions from available evidence (deduction). Under this premise, the only three elements of the logical paradigm are presented below:
+
+- **Facts**
+Statements that declare information known to be true inside the program's knowledge base. These represent relationships, properties or conditions.
+
+- **Rules**
+Logical implications that define new relationships based on existing facts or different rules. These form the current reasoning mechanism of the program.
+
+- **Queries**
+Questions made to the logical system in order to determine whether the statement can be proven based on the given information, and inner rules and facts. The user makes queries to the system which returns its answer based on the program facts and rules.
+
+The Logical Paradigm and its implementation focuses on defining what properties define a valid solution to a problem based on the given information. The program interpreter performs searching, matching and backtracking in order to traverse the available facts and rules looking for the current solution that by deduction is the valid conclision to the given inputs. In comparison to the Imperative Paradigm, the Logical Paradigm gets far away from defining instructions to solve a problem, and rather focuses on the conditions that define a solution, while not being able to mutate data, or define sequential instructions.
+
+## Solution
+
 Programming Language: **Prolog**
 
 File: logical/prolog_solution.pl
 
-## Solution
+In the presented section, the composition of the file <code>prolog_solution.pl</code> will be divided into the three main elements of Logic Paradigm in order to demostrate its theorical use during the development of the solution, same concept is validated by the following presented model.
+
+
+*[Add here the model of the logical paradigm]*
+
+
+Note: When talking about the rules (which may have different versions depending on their parameters) the name convention "name/number" will be taken, where the number represents the number of rules under the same name.
+
+### Query
+<code>main/1</code> is itself a query to the system disguised as a rule that captures the input of the user (number and values of coins) and performs automatically the validation of the inpits and the obtention of the problem solution (as long as the validations are approved).
+
+### Knowledge Base
+Even though there is no traditional facts stablished in the form <code>dog(fido).</code>, there is usage of an actual knowledge bases in the presented solution through the unification of the use of rule's base cases and comparison against known truths inside rules.
+
+
+The base cases for the rules <code>count, invert, greater_than, append, quick_sort</code> and <code>sum_ele_aux</code> declare truths that either carried empty constants contain the same value than another constant where the calculation was perform (stopping backtracking and allowing to take a result out of a recursive rule) or declare the stop condition of a recursive rule; being equivalent to an actual fact that despite the information it carries or the process behind it stops processes and assigns values.
+
+
+On the other hand, rules such as <code>range</code> and <code>verify_count</code> rely on given parameters to compare agaisnt a known truth (the declared range between 1 and 100, and the fact that the number of elements in the list must be equal to the given number) in order to assign a value to a given constant (flags used to continue or interrupt the program and return a result).
+
+
+Together, the presence of these presented truths inside different designes rules form a knowledge base that works as a validation of the given information and conditions that logically assign calculations to constants in order to continue a process.
+
+### Rules
+The implementation of rules with one and several variations is clearly presented in the solution as the program is implemented through the validation, completion and cooperation among rules. Their current design allows to perform different processes that range from mathematical operations to logical comparisons in recursive calls and complement each other being part of more complex rules, making use of backtracking while the actual deduction of the answer is being processed. One of the most complex examples is the rule <code>greater_than</code> that making use of backtracking and performing comparisons among constants X and H leads to the addition of elements to multiple lists that end up being greater, less or equal to the presented pivot (X).
+
+
+## Rules decomposition
+
+The rules <code>read_line_to_string</code> and <code>number_string</code> are build-in prolog.
+
+- main
+Query desguised as rule that reads the input from console, convert the inputs respectively into numbers and a list of numbers, and validates their range and count before passing to the actual problem solving rule <code>coins</code>. If any of the validations making use of <code>range</code> or <code>verify_count</code> fail, the rule assigns 0 to F as the sequence was interrupted.
+
+- split_to_ints
+Rule that divides the given input string into a list and converts all the elements of the list into numbers using <code>number_string</code> through the maping of the list.
+
+- range (KB)
+Validated the range of R (1=< R <=100) and assigns T a number as a flag (0 or 1).
+
+- verify_count
+Making use of the rule <code>count</code> to validate the amount of elements in the given list L, assigns the flag R a number (0 or 1).
+
+- count (KB)
+Function that recursively verifies each element of the given list is within range using the rule <code>range</code>, takes out one element from the list, and increase the counter until the list is empty, the returned counter is only the count if all the elements are within range, being both a counter and a validator (base case assignation).
+
+- coins
+Performs a <code>quick_sort</code> to the given list and makes use of the rule <code>coins_aux</code> in order to obtain the deduction of N before returning it.
+
+- quick_sort (KB)
+Recursive rule that divides the list into three sections (larger, equal, small) making use of the rule <code>greater_than</code> calls itself in both the larger and smaller lists, until the given list is empty, then joins together in order the elements of the lists as larger + equal + pivot + less using <code>append</code> leading to a given list in descending order passed by the constant X.
+
+- greater_than (KB)
+Recursive rule with two variants that based on comparisons with the number X assigns the elements of the original given list Y into three lists (greater, equal and smaller numbers) and returns them in different constants once the original list has been emptied and the greater and smaller list have been inverted <code>invert</code>.
+
+- invert (KB)
+Recursive rule with three variants (one that calls the other two) that passes all elements of the original list into an empty list, inverting the elements and returning them into a different constant.
+
+- append (KB)
+Recursive rule responsible for joining the elements of two list together in order and return the new list into a different constant.
+
+- coins_aux
+Recursive rule that compares the sum of elements in the two given lists (through the rule <code>sum_ele</code>) and returns the counter in C through the constant N once the sum of the list V is greater than the sum of the list L, stopping backtracking and furthermore calls of the rule. Otherwise, passes one element of L into V and increases C by 1 through assignation and call of the function with a new constant.
+
+- sum-ele
+Reccursive rule with three variants (one variant calls the other two) that adds up together the elements of the list by assigning the sum of the elements into the constant S and calls itself until the given list is empty and returns the addition through the constant R.
 
 ## Testing
+To test either the actual program or run automatically the 29 tests given by Codeforces, an installed version of prolog as SWI Prolog is required.
+
+The following indications are designed for SWI Prolog which is the version installed in class and can be accessed in the following link [SWI-Prolog](https://www.swi-prolog.org/) or 
+
+To run the chosen program in terminal use the following command:
+```
+swipl [file_name or file/path]
+```
+
+### Individual file
+Run from the github repository (/Paradigm_Demostration_Twins_Codeforces)
+```
+swipl logical/prolog_solution.pl 
+```
+
+or inside the /logical directory
+```
+swipl prolog_solution.pl 
+```
+
+Inmediately the command line for prolog will be open:
+```
+?- 
+```
+
+Type:
+```
+main(F).
+```
+The program will start and the input will open in terminal as <code>|: </code> here type the input (number of coins to enter) and press the "Enter" key.
+Insert the second input (values of the coins divided by one whitespace) and press the "Enter" key.
+The program will return the minimum number of coins to take and have a slighly greater amount that the remaining coins or 0 in case the input was invalid.
+
+Examples.
+
+**Valid inputs**
+
+```
+?- main(F).
+|: 5
+|: 5 2 3 8 15
+F = 2 .
+```
+Only the coins with values 15 and 8 (2 coins with a total of 23) are enough to be greater than the addition of the remaining coins (5 + 3 + 2 = 10). 
+
+**Invalid inputs**
+```
+?- main(F).
+|: 5
+|: 2
+F = 0.
+```
+As the input indicated it will enter 5 coins, but only gave the value of the first one is considered invalid and returns 0 as a result.
+
+### Testing file5 
+
 
 
 # Analysis
