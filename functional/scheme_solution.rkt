@@ -218,8 +218,14 @@
 ;; -------------------- Program --------------------
 
 (define (main)
+  (display "\nIntroduce number of coins to enter: E. 3")
+  (newline)
+  
   ;;Obtention of line 1. Number x
   (define n (read-line))
+
+  (display "Introduce all coins values divided by spaces: E. 5 6 10")
+  (newline)
 
   ;;Obtention of line 2. List of coins
   (define list-text (read-line))

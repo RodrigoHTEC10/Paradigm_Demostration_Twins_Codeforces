@@ -193,6 +193,8 @@ The usage of the functional paradigm requires rather than a linear explanation o
 The following explanations will begin by the more complex functions diving them slowly into their most basic ones as the following diagram depicts.
 
 
+*[Insert here model image]*
+
 ### Layer 0
 
 - main (layer 0)
@@ -202,6 +204,7 @@ Function that holds the complete process mechanism, from the current input obten
 
 - define (layer 1)
 Built-in function that allow to associate concrete names to values.
+
 
 - string->number (layer 1)
 Built-in function that converts the current given value (string) to a data type (number).
@@ -280,8 +283,49 @@ Created function that calls the inner function <code>invert-inner</code> giving 
 Created recursive function that passes all the elements of the original list to the empty list, changing the order of the elements when returning the second list.
 
 
+----
+
+The presented solution fits the Functional Paradigm for the following reasons:
+- The program logic is performed by expressions and the use of functions and their return values.
+- There is no variable mutations in the program, only immutable binding of values to determine names using the <code>define</code> function.
+- At several points, the program demostrates functional composition by showing the usage of inner functions and the pass of functions as parameters.
+
+
 ## Testing
 
+To test either the actual program or run automatically the 29 tests given by Codeforces, Dr Racket or the extention of Dr Racket into VS code is required.
+
+Once this extention is installed or the file is open in Dr Racket, press the "Run file in terminal" button.
+
+### Individual file
+
+When running the file <code>scheme_solution.rkt</code> the console will display instructions about its use.
+1. First introduce the number of coins to enter.
+2. Introduce all coins values divided by spaces.
+
+Afterwards the program will return the answer and display it in console.
+
+### Testing file
+
+When running the file <code>testing_scheme.rkt</code> all test cases will run automatically.
+
+Due to the design of the initial file the messages with the instructions will be displayed, afterwards a message indicating if the actual test was a success or a fail like:
+
+```
+Introduce number of coins to enter: E. 3
+Introduce all coins values divided by spaces: E. 5 6 10
+SUCCESS expected: 2
+
+or
+
+Introduce number of coins to enter: E. 3
+Introduce all coins values divided by spaces: E. 5 6 10
+FAIL | input: 2\n3 3\n
+    expected: 2
+    got: 4
+```
+
+It is important to notice that as Codeforces only checks actual successful test cases, all given test cases will be passed as <code>SUCCESS</code>.
 
 # Logical Paradigm
 
