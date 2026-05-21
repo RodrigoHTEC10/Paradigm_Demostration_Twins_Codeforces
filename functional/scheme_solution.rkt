@@ -62,28 +62,28 @@
   )
 
 
-;;Auxiliar function is_larger
+;;Auxiliar function is-larger
 ;;   Function responsible for returing a boolean if a > b. 
 
-(define (is_larger a b)
+(define (is-larger a b)
   (cond
     [(> a b) true]
     [else false]))
 
 
-;;Auxiliar function is_lesser
+;;Auxiliar function is-lesser
 ;;   Function responsible for returing a boolean if a < b.
 
-(define (is_lesser a b)
+(define (is-lesser a b)
   (cond
     [(< a b) true]
     [else false]))
 
 
-;;Auxiliar function is_equal
+;;Auxiliar function is-equal
 ;;   Function responsible for returing a boolean if a = b.
 
-(define (is_equal a b)
+(define (is-equal a b)
   (cond
     [(= a b) true]
     [else false]))
@@ -92,54 +92,54 @@
 
 ;;Auxiliar function larger-items
 ;;   Recursive function responsible for returning a list with all numbers from the list
-;;   list that are larger than the number t.
+;;   list that are larger than the number pivot.
 
-(define (larger-items list t)
-  (inner-larger list '() t))
+(define (larger-items list pivot)
+  (inner-larger list '() pivot))
 
 ;;inner-larger function
 
-(define (inner-larger list myl t)
+(define (inner-larger list myl pivot)
   (cond
     [(empty? list) (invert myl)]
-    [(is_larger (first list) t) (inner-larger (rest list) (cons (first list) myl) t) ]
-    [else (inner-larger (rest list) myl t)]
+    [(is-larger (first list) pivot) (inner-larger (rest list) (cons (first list) myl) pivot) ]
+    [else (inner-larger (rest list) myl pivot)]
     )
   )
 
 
 ;;Auxiliar function equal-items
 ;;   Recursive function responsible for returning a list with all numbers from the list
-;;   list that are equal to the number t.
+;;   list that are equal to the number pivor.
 
-(define (equal-items list t)
-  (inner-equal list '() t))
+(define (equal-items list pivot)
+  (inner-equal list '() pivot))
 
 ;;inner-equal function
 
-(define (inner-equal list myl t)
+(define (inner-equal list myl pivot)
   (cond
     [(empty? list) myl]
-    [(is_equal (first list) t) (inner-equal (rest list) (cons (first list) myl) t) ]
-    [else (inner-equal (rest list) myl t)]
+    [(is-equal (first list) pivot) (inner-equal (rest list) (cons (first list) myl) pivot) ]
+    [else (inner-equal (rest list) myl pivot)]
     )
   )
 
 
 ;;Auxiliar function Lesser Items
 ;;   Recursive function responsible for returning a list with all numbers from the list
-;;   list that are less than the number t.
+;;   list that are less than the number pivot.
 
-(define (lesser-items list t)
-  (inner-lesser list '() t))
+(define (lesser-items list pivot)
+  (inner-lesser list '() pivot))
 
 ;;inner-lesser function
 
-(define (inner-lesser list myl t)
+(define (inner-lesser list myl pivot)
   (cond
     [(empty? list) (invert myl)]
-    [(is_lesser (first list) t) (inner-lesser (rest list) (cons (first list) myl) t) ]
-    [else (inner-lesser (rest list) myl t)]
+    [(is-lesser (first list) pivot) (inner-lesser (rest list) (cons (first list) myl) pivot) ]
+    [else (inner-lesser (rest list) myl pivot)]
     )
   )
 

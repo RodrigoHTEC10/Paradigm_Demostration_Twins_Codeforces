@@ -103,7 +103,7 @@ The given coins must be ordered in descending order (from greatest to lowest) as
 
 The procedure or structure to perform this sorting may vary depending on implementation:
 
-- Heap / Priority queue: Store the actual values on a heap or priority queue that allows to sort elements when inserting them into the array and take out the greater elements.
+- Heap / Priority queue: Store the current values on a heap or priority queue that allows to sort elements when inserting them into the array and take out the greater elements.
 - Use of a sorting algorithm: Storage of elements in a list and sorting of the elements based on a concrete sorting algorithm.
 
 ### 5. Perform comparison.
@@ -126,7 +126,7 @@ The Imperative Programming Paradigm is the practice of giving the computer instr
 
 It is characterized for its statement-at-a-time focus which pays special attention on what each statement does at which time (sequential); allows to change the values stored at memory locations (mutable states); and clearly states control structures (loops and conditionals).
 
-This paradigm is the most commonly known in the early stages at computer science education (until the actual start of this course,  it was the only one I knew) because of its similarity with human instructions; by giving indications of declaring data under names, and telling all the modifications to such data it is relatively easy to transfer the conceptual ideas into code. Because of this, the imperative paradigm is covered by most of the popular programming languages as C, C++, Java or Python (despite these can or can not support other paradigms as well).
+This paradigm is the most commonly known in the early stages at computer science education (until the current start of this course,  it was the only one I knew) because of its similarity with human instructions; by giving indications of declaring data under names, and telling all the modifications to such data it is relatively easy to transfer the conceptual ideas into code. Because of this, the imperative paradigm is covered by most of the popular programming languages as C, C++, Java or Python (despite these can or can not support other paradigms as well).
 
 ## Solution
 
@@ -137,9 +137,9 @@ File: general_solution/solution.cpp
 Function:
 This file was developed in order to pass all the automatic tests in Codeforces and obtain such tests for proving the solutions implemented in the logical and functional paradigm.
 
-The proof of the actual solution acceptance is shown in the following images:
+The proof of the current solution acceptance is shown in the following images:
 
-*[Screenshot of actual codeforces acceptance.]*
+*[Screenshot of current codeforces acceptance.]*
 
 Logic:
 1. Declaration of variables to use. (integers: <code>num, total, enough, answer, </code>. booleans: <code>approvedNum, approvedEle</code>)
@@ -171,14 +171,114 @@ Logic:
 
 # Functional Paradigm
 
+The Functional Programming Paradigm allows the programmer to focus on describing what it needs to be computed instead of responsibilities as organize the computation sequencing or organize memory management (which are associated mainly with the Imperative Paradigm). This description relies in **expressions** (made up from **functions**) with an automatic evaluation handled by the language that support them. To better understand the approach behind this paradigm, the definition and characteristics of functions are presented below.
 
+A **function** is defined as a correspondence between argument values (source) and result values (target). A function analysed *intensionally* explains the process by which the function arrived to the target from the given arguments (all the inner processing); on the other hand, an *extensional* analysis abstracts away the details of the function, considering it as a blackbox that based on the given parameters obtains a target from it. This last characteristic allows to use functions as their given output and consider them as interchangeable components inside a program (as two functions that return the same result from the same inputs would be considered equivalent).
+
+Furthermore, several functions can be combined in a single expression, allowing to use functions (considered as abstract blackboxes that return targets) as parameters of other functions, as the produced subcalculations (of the first function) are directly communicated to other parts of the program that make use of them.
+
+The functional paradigm takes away the posibility to mutate data (no modification of variables) instead giving a new thinking approach that based exclusively on functions leads to:
+- Easier debugging.
+- Greater modularity and reusability.
+- More predictable outcomes.
+
+## Solution
 
 Programming Language: **Scheme**
 
-File: 
+File: functional/scheme_solution.rkt
+
+The usage of the functional paradigm requires rather than a linear explanation of the solution, of the description and dependency of the several designed functions in order to collect the complete mechanism that solves the "Twins" problem.
+
+The following explanations will begin by the more complex functions diving them slowly into their most basic ones as the following diagram depicts.
 
 
-## Solution
+### Layer 0
+
+- main (layer 0)
+Function that holds the complete process mechanism, from the current input obtention and processing to the problem solving logic.
+
+### Layer 1
+
+- define (layer 1)
+Built-in function that allow to associate concrete names to values.
+
+- string->number (layer 1)
+Built-in function that converts the current given value (string) to a data type (number).
+
+
+- string-split (layer 1)
+Built-in function that allows to divide a string into elements by their white-spaces " ".
+
+
+- map (layer 1)
+Built-in function that allows to go through a list and apply the given function to all the elements of the list. This is applied over the elements divided from the string of the second input in order to apply the function <code>string->number</code> into each string "5" to conver to number 5.
+
+
+- coins (layer 1)
+Created function that returns 0 if the functions <code>number</code>  (giving it the list, number and an empty counter 0), and <code>in-range</code> (giving it the first input) are not meet. Otherwise, call the function <code>coins-aux</code> (giving the list inside the function <code>quick-sort</code> a counter in 0 and an empty list) or return 0.
+
+
+### Layer 2
+
+- number
+Created function that calls itself recursively while taking elements out of the given list (and validating their range with <code>in-range</code>) and increasing the elements count. Only when the list is empty evaluates if the given length and the counter are equal returning true; otherwise returning false.
+
+
+- quick-sort
+Created function that based on the first element of the list (called pivot) calls itself recursively over the group of greater and lesser elements of the list than the pivot (<code>larger-items, lesser-items</code>) and appends the given result (<code>append_lists</code>) together with the elements equal to the pivot (<code>equal-items</code>), until the list is empty.
+
+This recursive calling allows to add always the greater, equal and less elements of each element until the list was empty, and integrate all results together creating a sorting list in descending order.
+
+
+- coins-aux
+Created function that returns a counter number until the list of coins is empty or the sum of the elements of the created list (initially empty) using <code>sum-list</code> is greater than the sum of the list of the remaining coins. If neither of both condition is accomplished, calls itself recursively moving one elements of the list to the taken coins and increasing the coins counter.
+
+### Layer 3 
+
+- in-range
+Created function that based on a conditional only returns true when the given number is greater or equal to 1 and less or equal to 100.
+
+
+- sum-list
+Created function that calls its auxiliar function <code>inner-sum</code> sending a list and a 0 (afterwards the sum of the elements of the list).
+
+
+- append()
+Created function that recursively until the first list is empty returns the list b, otherwise calls itself with the remaining elements of the first list (separating the first element). Until all the elements of the first list have not been divided into single elements through the recursive calls, the current elements will join at the start of b all together forming a single list to return.
+
+
+- larger-items, lesser-items and equal-items
+Created function that calls the auxiliar function <code>inner-larger, inner-lesser or inner-equal</code>respectively giving an empty list, the current list and the pivot number.
+
+### Layer 4
+
+- inner-sum
+Created function that recursively calls itself adding to the integer parameter the first element of the given list until the list is empty, finally returning such addition.
+
+
+- inner-larger, inner-lesser and inner-equal
+Created function that recursively calls itself until the given list is empty returning the second created list; while this condition is met, in each call it puts elements of the original list to the initially empty list if they accomplish the condition given by the inner function <code>is-larger, is lesser or is-equal</code> respectively, otherwise continuing to the recursive call as given.
+
+These functions return a list containing only the greater, lesser or equal elements to the given pivot number.
+
+### Layer 5
+
+- is-greater = (a > b)
+
+- is-lesser = (a < b>)
+
+- is-equal = (a == b)
+
+- invert
+Created function that calls the inner function <code>invert-inner</code> giving the given list and an empty list.
+
+
+### Layer 6
+
+- invert-inner
+Created recursive function that passes all the elements of the original list to the empty list, changing the order of the elements when returning the second list.
+
 
 ## Testing
 
@@ -187,7 +287,7 @@ File:
 
 Programming Language: **Prolog**
 
-File: 
+File: logical/prolog_solution.pl
 
 ## Solution
 
