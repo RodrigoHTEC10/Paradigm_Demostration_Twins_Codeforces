@@ -229,7 +229,7 @@ Created function that calls itself recursively while taking elements out of the 
 
 
 - quick-sort
-Created function that based on the first element of the list (called pivot) calls itself recursively over the group of greater and lesser elements of the list than the pivot (<code>larger-items, lesser-items</code>) and appends the given result (<code>append_lists</code>) together with the elements equal to the pivot (<code>equal-items</code>), until the list is empty.
+Created function that based on the first element of the list (called pivot) calls itself recursively over the group of greater and lesser elements of the list than the pivot (<code>larger-items, lesser-items</code>) and appends the given result (<code>append-lists</code>) together with the elements equal to the pivot (<code>equal-items</code>), until the list is empty.
 
 This recursive calling allows to add always the greater, equal and less elements of each element until the list was empty, and integrate all results together creating a sorting list in descending order.
 
@@ -533,181 +533,184 @@ In the current section a temporal and spacial analysis will be performed to the 
 
 ## Traditional Solution 
 
-Where *N* is the number of coins' values in the second input.
+Where $N$ is the number of coins' values in the second input.
 
 Taking into consideration the relatively simpleness of the developed program there are only two sections that are worth to mention as the remaining variable declaration, first input obtention and validation, as well as the return of the actual answer have both a time and memory complexity of O(1).
 
-These interesting sections emerge from the use of the priority queue. By researching about its implementation, this queue is internally a binary max-heap which <code>push()</code> and <code>pop()</code> functions have a time complexity of *O(log N)* in the worst case as the addition of an elements puts it at the bottom of the heap requiring it to be evaluated against all the other elements, while the element does the same for the root element. On the other side, their space complexity is *O(1)* as there is no need for a new object creation. The creation of the queue in comparison takes as higher space complexity *O(N)* as time *O(N)*, which is ironically better than individual element pushing. The best of its functions is <code>top()</code> as it has a time and space complexity of *O(1)*.
+These interesting sections emerge from the use of the priority queue. By researching about its implementation, this queue is internally a binary max-heap which <code>push()</code> and <code>pop()</code> functions have a time complexity of $O(log N)$ in the worst case as the addition of an elements puts it at the bottom of the heap requiring it to be evaluated against all the other elements, while the element does the same for the root element. On the other side, their space complexity is $O(1)$ as there is no need for a new object creation. The creation of the queue in comparison takes as higher space complexity $O(N)$ as time $O(N)$, which is ironically better than individual element pushing. The best of its functions is <code>top()</code> as it has a time and space complexity of $O(1)$.
 
 ### Time Complexity
 
 Taking this into consideration the previous information, the evaluation of the first loop for the input obtention as:
-- number validation in range - *O(1)*
-- queue push() - *O(log N)*
-- total addition - *O(1)*
-All inside a loop of *O(N)* in time which leads to a total loop time complexity of *O(N log N)*.
+- number validation in range - $O(1)$
+- queue push() - $O(log N)$
+- total addition - $O(1)$
+All inside a loop of $O(N)$ in time which leads to a total loop time complexity of $O(N log N)$.
 
-On the other evaluated loop which is the answer obtention, the while loop time complexity is determined exactly by the answer, which can be called as *Y*. In the worst case, the answer *Y* is equal to *N*, and in the best it is *1* (one coin is more than half of the total money).
+On the other evaluated loop which is the answer obtention, the while loop time complexity is determined exactly by the answer, which can be called as $Y$. In the worst case, the answer $Y$ is equal to $N$, and in the best it is $1$ (one coin is more than half of the total money).
 In this case we obtain:
-- top() consultion - *O(1)*
-- answer +1 addition - *O(1)*
-- queue pop() - *O(log N)*
-Which lead to a total of *O(K log N)* where the wors case equals *O(N log N)*.
+- top() consultion - $O(1)$
+- answer +1 addition - $O(1)$
+- queue pop() - $O(log N)$
+Which lead to a total of $O(K log N)$ where the wors case equals $O(N log N)$.
 
-Based on the addition of both loops which are the most time complex sections of the program the worst and ironically best time complexities are *O(N log N)* as even if the answer is the first element of the queue, the first loop stays as *O(N log N) +  0(1) = O(N log N)*.
+Based on the addition of both loops which are the most time complex sections of the program the worst and ironically best time complexities are $O(N log N)$ as even if the answer is the first element of the queue, the first loop stays as $O(N log N) +  0(1) = O(N log N)$.
 
 ### Space Complexity
-Ironically more simpler than the time complexity, the only sections that add a relative complexity are the creation of the queue and the additions of the elements to the queue which are handled in the first loop, leading to an overall space complexity of *O(N)* as all the remaining declared variables are only *O(1)*.
+Ironically more simpler than the time complexity, the only sections that add a relative complexity are the creation of the queue and the additions of the elements to the queue which are handled in the first loop, leading to an overall space complexity of $O(N)$ as all the remaining declared variables are only $O(1)$.
 
 ---
-Time: *O(N log N)*
-Space: *O(N)*
+Time: $O(N log N)$
+
+Space: $O(N)$
 
 ## Functional Paradigm
 For the time and space complexity analysis of the functional solution, each function's complexity will be evaluated individually starting from the functions without any dependance on others, slowly building up until the <code>main</code> function complexity and therefore the program's is achieved.
 
 ### Time Complexity
 
+Standards to take into consideration:
+- $N$ = Number of elements of the list.
+
 #### Layer 6
 
 - invert-inner
+Recursive call until the first list is empty, which leads to a time complexity depenidng on the elements of the first list which we will determine as $N$ being a $O(N)$
 
 #### Layer 5
 
-- is-greater = (a > b)
-
-- is-lesser = (a < b>)
-
-- is-equal = (a == b)
+- is-greater, is-lesser & is-equal
+Share a time complexity of $O(1)$ as they only evaluate a condition between two numbers and return a flag.
 
 - invert
+As invert calls invert-inner, it inherits directly its time complexity of $O(N)$
 
 #### Layer 4
 
 - inner-sum
-
-
+As a recursive function that calls itself as long as the given list contains elements it can be determined as a time complexity of $O(N)$.
 
 - inner-larger, inner-lesser and inner-equal
+Each of the given recursive functions call itself making comparisons between the pivoys and all the elements of the given list, leading to a time complexity of $O(N)$, multiplied by the usage of is-greater, is-lesser or is-equal, it produces the same result.
+
+Only in the case of inner-larger and inner-lesser it ads up only once the use of the invert function, leading to the sum $O(N) + O(B)$ where B is the number of all the elements that fit inside the filtered list, goes at worst at a $O(N)$ based on the original list.
 
 #### Layer 3 
 
 - in-range
-
+Simple function that performs a comparison against two values, leading to a time complexity of $O(1)$ as its only tested with one number at a time.
 
 - sum-list
+Intermediate function that calls inner-sum leading to an inherited time complexity of $O(N)$.
 
+- append-lists
+Recursive function that calls itself as long as the first given list still contains elements, considering this number of elements as $N$ the complexity gets similar to $O(N)$.
 
+- larger-items and lesser-items 
+Recursive function that calls itself as long as the given list still contains elements beig overall $O(N)$, additionally in each validation it uses either is-greater or is-lesser adding up $O(1)$ and at return uses invert $O(N)$ leading to an overall time complexity of $O(2N)$ which reduces to $O(N)$.
 
-- append()
-
-
-
-- larger-items, lesser-items and equal-items
-
+- equal-items
+Identical functioning than larger-items and lesser-items taking out the use of invert, leading to a similar end result of $O(N)$.
 
 #### Layer 2
 
 - number
-
+Recursive functions that calls itself as long as the elements of the given list are within range (1-100) inclusive, and the list contains elements giving an overall function time of $O(N)$, the actual use of in-range in each validation adds the multiplication of $O(1)$ leading to an overall $O(N)$.
 
 - quick-sort
-
+Recursive function that calls itself as long as the given list is empty ($O(N)$) changing each time the pivoting number and calling a double append-lists ($O(2N)$) with an inside larger-items, equal-items and lesser-items ($O(N) + O(N) + O(N)$). This collection of functions being carried up through all the previous analysis leads to an overall time complexity of $O(N log N)$ in the average cases as the collection of inner functions are sequential to one another, leading to in rare cases a worst scenatio of $O(n^2)$ 
 
 - coins-aux
-
+Recursive function that calls itself as long as there are elements in the given list or the sum of the elements of the taken coins list is greater than the sum in the remaning coins list. In the worst case a $O(N)$, in the best scenatio $O(1)$. In each of these comparing cases sum-lists is called twice (one per list) leading to $O(2N)$ and an overall time complexity of $O(N^2)$.
 
 
 #### Layer 1
 
-- define 
-
-
-- string->number 
-
+- define and string->number 
+Built-in functions with a time complexity of $O(1)$.
 
 - string-split 
-
+Function that turns a given string into a list of strings dividing it by its blank spaces giving a dependency over the total number of elements in the list or original string ($O(N)$)
 
 - map 
-
+Function that applied a given function into each element of a list, leading to a direct $O(N)$.
 
 - coins
+As coins make a direct use of number ($O(N)$), in-range ($0(1)$), quick-sort ($O(N log N)$ to $O(N^2)$) and coins-aux ($O(N^2)$) this leads directly to the worst case directed by $O(N^2)$.
 
-
-
+All together leading the control of main by the usage of coins, and due that all the functions used there are sequential, the overall time complexity is directed to the worst case of $O(N^2)$.
 
 ### Space Complexity
 
 #### Layer 6
 
 - invert-inner
+Overall space complexity of $O(N)$ as it depending on the collection of elements in both given lists.
 
 #### Layer 5
 
-- is-greater = (a > b)
-
-- is-lesser = (a < b>)
-
-- is-equal = (a == b)
+- is-greater, is-lesser and is-equal
+Gives a time complexity of $O(1)$ as only the object flag is created and returned independly of the given parameters.
 
 - invert
+Intermediate function that inherits the actual space complexity of ivert-inner $O(N)$.
 
 #### Layer 4
 
 - inner-sum
-
+Similarly to invert, depending completely on the number of elements of the list, and taking into consideration its recursive calls leads to a time complexity of $O(N)$.
 
 
 - inner-larger, inner-lesser and inner-equal
+As the recursive calls of the functions can create at most a list with as much elements as the original list, its worst space complexity is $O(N)$.
 
 #### Layer 3 
 
 - in-range
+$O(1)$ as only one integer is compared and a flag is generated and returned.
 
-
-- sum-list
-
-
-
-- append()
-
-
+- sum-list & append-lists
+Both function in the current layer depend on the number of elements in the given list, leading to both being $O(N)$.
 
 - larger-items, lesser-items and equal-items
-
+As these are intermediate functions, they inherit the time complexity of inner-larger, inner-lesser and inner-equal being equal to $O(N)$.
 
 #### Layer 2
 
 - number
-
+Its recursion through the elements of the given list in order to confirm their number equals an space of $O(N)$.
 
 - quick-sort
+The collection of all the time complexities from append ($O(N)$), and the sequential usage of larger-items, lesser-items and equal-items leads similarly to time complexity to a time of $O(log N)$ which considering the recursive nature of quick-sort depending on the elements of the original list $O(N)$ leads to an average space complexity of $O(N log N)$ and a worst case of $O(N^2)$.
 
+This curiously aligns with the average and worst time complexity of the quick-sort implementations shown in the Big-O-Cheapsheet.
 
 - coins-aux
-
+Despite its recursive nature and the usage of the double sum-lists, it only creates a list of taken coins and a counter which is returned, leading to a creation in the worst case of $O(N)$.
 
 
 #### Layer 1
 
-- define 
-
-
-- string->number 
-
+- define and string->number 
+Conversion and association of a value has at most $O(1)$ space complexity
 
 - string-split 
-
+This function requires of the creation of a list for as much elements as the contained in the given string leading to $O(N)$.
 
 - map 
-
+The function creates a mapped list instead of using the given list to apply the given function, leading to a new list with $O(N)$ as its based on the same number of elements.
 
 - coins
+Overally, the usage of number ($O(N)$), in-range ($O(1)$), quick-sort ($O(N log N)$ to $O(N^2)$) and coins-aux ($O(N)$) leads to the average and worst case scenario heavily influenced by the function quick-sort ($O(N log N)$ to $O(N^2)$), contrary to the influence of coins-aux for the time complexity.
 
+---
 
+Time: $O(N log N) to $O(N^2)$
+
+Space: $O(N log N) to $O(N^2)$
 
 ## Logical Paradigm
+Similarly to the previous paradigm' analysis, the following two sections will be divided by the rules of the solution implemented in Prolog, paying special attention to the recursive calls of each rule and the possible branches the default backtracking may analyze.
 
 ### Time Complexity
 

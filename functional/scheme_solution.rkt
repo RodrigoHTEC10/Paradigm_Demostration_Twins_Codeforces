@@ -148,7 +148,7 @@
 ;;   Function responsible for returning a list that contains all elements in order of
 ;;   the given lists a and b.
 
-(define (append_lists a b)
+(define (append-lists a b)
   (cond [(empty? a) b]
         [else (cons (first a) (append (rest a) b))]
         )
@@ -162,7 +162,7 @@
 (define (quick-sort list)
   (cond
     [(empty? list) list]
-    [else (append_lists (append_lists
+    [else (append-lists (append-lists
           (quick-sort (larger-items list (first list)))
           (equal-items list (first list)))
           (quick-sort (lesser-items list (first list))))]
