@@ -388,7 +388,7 @@ Note: When talking about the rules (which may have different versions depending 
 Even though there is no traditional facts stablished in the form <code>dog(fido).</code>, there is usage of an actual knowledge bases in the presented solution through the unification of the use of rule's base cases and comparison against known truths inside rules.
 
 
-The base cases for the rules <code>count, invert, greater_than, append, quick_sort</code> and <code>sum_ele_aux</code> declare truths that either carried empty constants contain the same value than another constant where the calculation was perform (stopping backtracking and allowing to take a result out of a recursive rule) or declare the stop condition of a recursive rule; being equivalent to an actual fact that despite the information it carries or the process behind it stops processes and assigns values.
+The base cases for the rules <code>count, invert, greater_than, append, quick_sort</code> and <code>sum_ele</code> declare truths that either carried empty constants contain the same value than another constant where the calculation was perform (stopping backtracking and allowing to take a result out of a recursive rule) or declare the stop condition of a recursive rule; being equivalent to an actual fact that despite the information it carries or the process behind it stops processes and assigns values.
 
 
 On the other hand, rules such as <code>range</code> and <code>verify_count</code> rely on given parameters to compare agaisnt a known truth (the declared range between 1 and 100, and the fact that the number of elements in the list must be equal to the given number) in order to assign a value to a given constant (flags used to continue or interrupt the program and return a result).
@@ -437,7 +437,7 @@ Recursive rule responsible for joining the elements of two list together in orde
 - coins_aux
 Recursive rule that compares the sum of elements in the two given lists (through the rule <code>sum_ele</code>) and returns the counter in C through the constant N once the sum of the list V is greater than the sum of the list L, stopping backtracking and furthermore calls of the rule. Otherwise, passes one element of L into V and increases C by 1 through assignation and call of the function with a new constant.
 
-- sum-ele
+- sum-ele (KB)
 Reccursive rule with three variants (one variant calls the other two) that adds up together the elements of the list by assigning the sum of the elements into the constant S and calls itself until the given list is empty and returns the addition through the constant R.
 
 ## Testing
@@ -495,25 +495,220 @@ F = 0.
 ```
 As the input indicated it will enter 5 coins, but only gave the value of the first one is considered invalid and returns 0 as a result.
 
-### Testing file5 
+### Testing file
+When running the file <code>testing_prolog.pl</code> the following command must be typed inside swipl in order to run all the 29 tests obtained from Codeforces.
 
+```
+test.
+```
 
+The results from the tests will print:
+
+```
+PASSED 
+(Input in two lines
+E.
+2
+3 3
+)
+```
+
+in case of an approved test case, or
+
+```
+FAIL 
+(Input in two lines
+E.
+2
+3 3
+)
+```
+
+in case the test case return a different result from the expected ones.
+
+Similarly to the scheme testing, as Codeforces only checks actual successful test cases, all given test cases will be completed as <code>PASSED</code>.
 
 # Analysis
+In the current section a temporal and spacial analysis will be performed to the created solutions (giving a final O Notation for both time and space complexity) divided into its individual sections in order to build up a fair comparison between the solutions implemented in the Imperative, Functional and Logical paradigms, in order to determine theorically which is the more efficient solution created and why.
 
-## Traditional Solution (Sequential & Imperative Paradigm)
+## Traditional Solution 
+
+Where *N* is the number of coins' values in the second input.
+
+Taking into consideration the relatively simpleness of the developed program there are only two sections that are worth to mention as the remaining variable declaration, first input obtention and validation, as well as the return of the actual answer have both a time and memory complexity of O(1).
+
+These interesting sections emerge from the use of the priority queue. By researching about its implementation, this queue is internally a binary max-heap which <code>push()</code> and <code>pop()</code> functions have a time complexity of *O(log N)* in the worst case as the addition of an elements puts it at the bottom of the heap requiring it to be evaluated against all the other elements, while the element does the same for the root element. On the other side, their space complexity is *O(1)* as there is no need for a new object creation. The creation of the queue in comparison takes as higher space complexity *O(N)* as time *O(N)*, which is ironically better than individual element pushing. The best of its functions is <code>top()</code> as it has a time and space complexity of *O(1)*.
+
 ### Time Complexity
 
+Taking this into consideration the previous information, the evaluation of the first loop for the input obtention as:
+- number validation in range - *O(1)*
+- queue push() - *O(log N)*
+- total addition - *O(1)*
+All inside a loop of *O(N)* in time which leads to a total loop time complexity of *O(N log N)*.
+
+On the other evaluated loop which is the answer obtention, the while loop time complexity is determined exactly by the answer, which can be called as *Y*. In the worst case, the answer *Y* is equal to *N*, and in the best it is *1* (one coin is more than half of the total money).
+In this case we obtain:
+- top() consultion - *O(1)*
+- answer +1 addition - *O(1)*
+- queue pop() - *O(log N)*
+Which lead to a total of *O(K log N)* where the wors case equals *O(N log N)*.
+
+Based on the addition of both loops which are the most time complex sections of the program the worst and ironically best time complexities are *O(N log N)* as even if the answer is the first element of the queue, the first loop stays as *O(N log N) +  0(1) = O(N log N)*.
 
 ### Space Complexity
+Ironically more simpler than the time complexity, the only sections that add a relative complexity are the creation of the queue and the additions of the elements to the queue which are handled in the first loop, leading to an overall space complexity of *O(N)* as all the remaining declared variables are only *O(1)*.
+
+---
+Time: *O(N log N)*
+Space: *O(N)*
 
 ## Functional Paradigm
+For the time and space complexity analysis of the functional solution, each function's complexity will be evaluated individually starting from the functions without any dependance on others, slowly building up until the <code>main</code> function complexity and therefore the program's is achieved.
+
 ### Time Complexity
+
+#### Layer 6
+
+- invert-inner
+
+#### Layer 5
+
+- is-greater = (a > b)
+
+- is-lesser = (a < b>)
+
+- is-equal = (a == b)
+
+- invert
+
+#### Layer 4
+
+- inner-sum
+
+
+
+- inner-larger, inner-lesser and inner-equal
+
+#### Layer 3 
+
+- in-range
+
+
+- sum-list
+
+
+
+- append()
+
+
+
+- larger-items, lesser-items and equal-items
+
+
+#### Layer 2
+
+- number
+
+
+- quick-sort
+
+
+- coins-aux
+
+
+
+#### Layer 1
+
+- define 
+
+
+- string->number 
+
+
+- string-split 
+
+
+- map 
+
+
+- coins
+
+
 
 
 ### Space Complexity
 
+#### Layer 6
+
+- invert-inner
+
+#### Layer 5
+
+- is-greater = (a > b)
+
+- is-lesser = (a < b>)
+
+- is-equal = (a == b)
+
+- invert
+
+#### Layer 4
+
+- inner-sum
+
+
+
+- inner-larger, inner-lesser and inner-equal
+
+#### Layer 3 
+
+- in-range
+
+
+- sum-list
+
+
+
+- append()
+
+
+
+- larger-items, lesser-items and equal-items
+
+
+#### Layer 2
+
+- number
+
+
+- quick-sort
+
+
+- coins-aux
+
+
+
+#### Layer 1
+
+- define 
+
+
+- string->number 
+
+
+- string-split 
+
+
+- map 
+
+
+- coins
+
+
+
 ## Logical Paradigm
+
 ### Time Complexity
 
 
@@ -526,3 +721,9 @@ As the input indicated it will enter 5 coins, but only gave the value of the fir
 # References
 Alsbjergvej 10, 9260 Gistrup, Denmark
 Bhattacharyya, Avi. Cybernetics in C++, River Publishers, 2018. ProQuest Ebook Central, http://ebookcentral.proquest.com/lib/biblitesm/detail.action?docID=5493972.
+
+Bramer, M. (2005). Logic Programming with Prolog. Springer Nature.
+
+Gupta, G. (s/f). CS3671: Programming Languages: Lecture 1. Utdallas.edu. Recuperado el 20 de mayo de 2026, de https://personal.utdallas.edu/~gupta/courses/apl/lec1.html
+
+Reade, C. (1989). Elements of Functional Programming (A. D. M. J. van Leeuwen, Ed.). Addison-Wesley Publishers Ltd.
