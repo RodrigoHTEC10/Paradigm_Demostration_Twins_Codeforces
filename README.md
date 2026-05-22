@@ -1,8 +1,8 @@
-# Evidence: Demostration of a Programming Paradigm - TC2037 - Group 603
+# Evidence: Demonstration of a Programming Paradigm - TC2037 - Group 603
 
 Author: Rodrigo Alejandro Hurtado Cortés - A01713854
 
-Date: May 19th, 2026
+Date: May 22nd, 2026
 
 <br>
 
@@ -65,17 +65,17 @@ From Codeforces
 
 ### Problem Election Justification
 
-The current problem was chosen mainly to demostrate the wide range of possibilities both chosen paradigms have to tackle the same challenges, which include:
+The current problem was chosen mainly to demonstrate the wide range of possibilities both chosen paradigms have to tackle the same challenges, which include:
 
 - Input processing
 - Availability to sort a series of values.
 - Perform comparison based on changing bases.
 
-This problem concretelly imposes a challenge for the functional paradigm by requiring the construction of a function that can handle the problem solving for any series of inputs, as long as they respect the input conditions established, through the use or recursive processing and list management.
+This problem concretely imposes a challenge for the functional paradigm by requiring the construction of a function that can handle the problem solving for any series of inputs, as long as they respect the input conditions established, through the use of recursive processing and list management.
 
 Similarly, the logical paradigm is tested as the obtention of a solution requires of backtracking applied to series of designed predicates, as well as recursive rules with base cases, in order to obtain the proper answer for the given parameters.
 
-Additionally, the logic to solve the problem can change depending on the paradigm  being used, as one way may be more or less difficult to implement in one language. Both found logic flows to solve the problem are presented in the following section before introducing the indivual solutions in C++ (imperative), scheme (functional) and prolog (logical paradigm).
+Additionally, the logic to solve the problem can change depending on the paradigm  being used, as one way may be more or less difficult to implement in one language. Both found logic flows to solve the problem are presented in the following section before introducing the individual solutions in C++ (imperative), scheme (functional) and prolog (logical paradigm).
 
 # Solution Logic
 
@@ -190,7 +190,7 @@ File: functional/scheme_solution.rkt
 
 The usage of the functional paradigm requires rather than a linear explanation of the solution, of the description and dependency of the several designed functions in order to collect the complete mechanism that solves the "Twins" problem.
 
-The following explanations will begin by the more complex functions diving them slowly into their most basic ones as the following diagram depicts.
+The following explanations will begin by the more complex functions dividing them slowly into their most basic ones as the following diagram depicts.
 
 
 *[Insert here model image]*
@@ -220,7 +220,7 @@ Built-in function that allows to divide a string into elements by their white-sp
 
 - map 
 
-Built-in function that allows to go through a list and apply the given function to all the elements of the list. This is applied over the elements divided from the string of the second input in order to apply the function <code>string->number</code> into each string "5" to conver to number 5.
+Built-in function that allows to go through a list and apply the given function to all the elements of the list. This is applied over the elements divided from the string of the second input in order to apply the function <code>string->number</code> into each string "5" to convert to number 5.
 
 
 - coins 
@@ -255,7 +255,7 @@ Created function that based on a conditional only returns true when the given nu
 
 - sum-list
 
-Created function that calls its auxiliar function <code>inner-sum</code> sending a list and a 0 (afterwards the sum of the elements of the list).
+Created function that calls its auxiliary function <code>inner-sum</code> sending a list and a 0 (afterwards the sum of the elements of the list).
 
 
 - append()
@@ -265,7 +265,7 @@ Created function that recursively until the first list is empty returns the list
 
 - larger-items, lesser-items and equal-items
 
-Created function that calls the auxiliar function <code>inner-larger, inner-lesser or inner-equal</code>respectively giving an empty list, the current list and the pivot number.
+Created function that calls the auxiliary function <code>inner-larger, inner-lesser or inner-equal</code>respectively giving an empty list, the current list and the pivot number.
 
 ### Layer 4
 
@@ -305,7 +305,7 @@ Created recursive function that passes all the elements of the original list to 
 The presented solution fits the Functional Paradigm for the following reasons:
 - The program logic is performed by expressions and the use of functions and their return values.
 - There is no variable mutations in the program, only immutable binding of values to determine names using the <code>define</code> function.
-- At several points, the program demostrates functional composition by showing the usage of inner functions and the pass of functions as parameters.
+- At several points, the program demonstrates functional composition by showing the usage of inner functions and the pass of functions as parameters.
 
 
 ## Testing
@@ -382,7 +382,7 @@ Logical implications that define new relationships based on existing facts or di
 - **Queries**
 Questions made to the logical system in order to determine whether the statement can be proven based on the given information, and inner rules and facts. The user makes queries to the system which returns its answer based on the program facts and rules.
 
-The Logical Paradigm and its implementation focuses on defining what properties define a valid solution to a problem based on the given information. The program interpreter performs searching, matching and backtracking in order to traverse the available facts and rules looking for the current solution that by deduction is the valid conclision to the given inputs. In comparison to the Imperative Paradigm, the Logical Paradigm gets far away from defining instructions to solve a problem, and rather focuses on the conditions that define a solution, while not being able to mutate data, or define sequential instructions.
+The Logical Paradigm and its implementation focuses on defining what properties define a valid solution to a problem based on the given information. The program interpreter performs searching, matching and backtracking in order to traverse the available facts and rules looking for the current solution that by deduction is the valid conclusion to the given inputs. In comparison to the Imperative Paradigm, the Logical Paradigm gets far away from defining instructions to solve a problem, and rather focuses on the conditions that define a solution, while not being able to mutate data, or define sequential instructions.
 
 ## Solution
 
@@ -390,7 +390,7 @@ Programming Language: **Prolog**
 
 File: logical/prolog_solution.pl
 
-In the presented section, the composition of the file <code>prolog_solution.pl</code> will be divided into the three main elements of Logic Paradigm in order to demostrate its theorical use during the development of the solution, same concept is validated by the following presented model.
+In the presented section, the composition of the file <code>prolog_solution.pl</code> will be divided into the three main elements of Logic Paradigm in order to demonstrate its theoretical use during the development of the solution, same concept is validated by the following presented model.
 
 
 *[Add here the model of the logical paradigm]*
@@ -399,10 +399,10 @@ In the presented section, the composition of the file <code>prolog_solution.pl</
 Note: When talking about the rules (which may have different versions depending on their parameters) the name convention "name/number" will be taken, where the number represents the number of rules under the same name.
 
 ### Query
-<code>main/1</code> is itself a query to the system disguised as a rule that captures the input of the user (number and values of coins) and performs automatically the validation of the inpits and the obtention of the problem solution (as long as the validations are approved).
+<code>main/1</code> is itself a query to the system disguised as a rule that captures the input of the user (number and values of coins) and performs automatically the validation of the inputs and the obtention of the problem solution (as long as the validations are approved).
 
 ### Knowledge Base
-Even though there is no traditional facts stablished in the form <code>dog(fido).</code>, there is usage of an actual knowledge bases in the presented solution through the unification of the use of rule's base cases and comparison against known truths inside rules.
+Even though there is no traditional facts established in the form <code>dog(fido).</code>, there is usage of an actual knowledge bases in the presented solution through the unification of the use of rule's base cases and comparison against known truths inside rules.
 
 
 The base cases for the rules <code>count, invert, greater_than, append, quick_sort</code> and <code>sum_ele</code> declare truths that either carried empty constants contain the same value than another constant where the calculation was perform (stopping backtracking and allowing to take a result out of a recursive rule) or declare the stop condition of a recursive rule; being equivalent to an actual fact that despite the information it carries or the process behind it stops processes and assigns values.
@@ -411,7 +411,7 @@ The base cases for the rules <code>count, invert, greater_than, append, quick_so
 On the other hand, rules such as <code>range</code> and <code>verify_count</code> rely on given parameters to compare agaisnt a known truth (the declared range between 1 and 100, and the fact that the number of elements in the list must be equal to the given number) in order to assign a value to a given constant (flags used to continue or interrupt the program and return a result).
 
 
-Together, the presence of these presented truths inside different designes rules form a knowledge base that works as a validation of the given information and conditions that logically assign calculations to constants in order to continue a process.
+Together, the presence of these presented truths inside different designed rules form a knowledge base that works as a validation of the given information and conditions that logically assign calculations to constants in order to continue a process.
 
 ### Rules
 The implementation of rules with one and several variations is clearly presented in the solution as the program is implemented through the validation, completion and cooperation among rules. Their current design allows to perform different processes that range from mathematical operations to logical comparisons in recursive calls and complement each other being part of more complex rules, making use of backtracking while the actual deduction of the answer is being processed. One of the most complex examples is the rule <code>greater_than</code> that making use of backtracking and performing comparisons among constants X and H leads to the addition of elements to multiple lists that end up being greater, less or equal to the presented pivot (X).
@@ -419,7 +419,7 @@ The implementation of rules with one and several variations is clearly presented
 
 ## Rules decomposition
 
-The rules <code>read_line_to_string</code> and <code>number_string</code> are build-in prolog.
+The rules <code>read_line_to_string</code> and <code>number_string</code> are built-in prolog.
 
 - main
 
@@ -427,11 +427,11 @@ Query desguised as rule that reads the input from console, convert the inputs re
 
 - split_to_ints
 
-Rule that divides the given input string into a list and converts all the elements of the list into numbers using <code>number_string</code> through the maping of the list.
+Rule that divides the given input string into a list and converts all the elements of the list into numbers using <code>number_string</code> through the mapping of the list.
 
 - range (KB)
 
-Validated the range of R (1=< R <=100) and assigns T a number as a flag (0 or 1).
+Validates the range of R (1=< R <=100) and assigns T a number as a flag (0 or 1).
 
 - verify_count
 
@@ -463,11 +463,11 @@ Recursive rule responsible for joining the elements of two list together in orde
 
 - coins_aux
 
-Recursive rule that compares the sum of elements in the two given lists (through the rule <code>sum_ele</code>) and returns the counter in C through the constant N once the sum of the list V is greater than the sum of the list L, stopping backtracking and furthermore calls of the rule. Otherwise, passes one element of L into V and increases C by 1 through assignation and call of the function with a new constant.
+Recursive rule that compares the sum of elements in the two given lists (through the rule <code>sum_ele</code>) and returns the counter in C through the constant N once the sum of the list V is greater than the sum of the list L, stopping backtracking and further calls of the rule. Otherwise, passes one element of L into V and increases C by 1 through assignation and call of the function with a new constant.
 
 - sum-ele (KB)
 
-Reccursive rule with three variants (one variant calls the other two) that adds up together the elements of the list by assigning the sum of the elements into the constant S and calls itself until the given list is empty and returns the addition through the constant R.
+Recursive rule with three variants (one variant calls the other two) that adds up together the elements of the list by assigning the sum of the elements into the constant S and calls itself until the given list is empty and returns the addition through the constant R.
 
 ## Testing
 To test either the actual program or run automatically the 29 tests given by Codeforces, an installed version of prolog as SWI Prolog is required.
@@ -480,7 +480,7 @@ swipl [file_name or file/path]
 ```
 
 ### Individual file
-Run from the github repository (/Paradigm_Demostration_Twins_Codeforces)
+Run from the github repository (/Paradigm_Demonstration_Twins_Codeforces)
 ```
 swipl logical/prolog_solution.pl 
 ```
@@ -558,13 +558,13 @@ in case the test case return a different result from the expected ones.
 Similarly to the scheme testing, as Codeforces only checks actual successful test cases, all given test cases will be completed as <code>PASSED</code>.
 
 # Analysis
-In the current section a temporal and spacial analysis will be performed to the created solutions (giving a final O Notation for both time and space complexity) divided into its individual sections in order to build up a fair comparison between the solutions implemented in the Imperative, Functional and Logical paradigms, in order to determine theorically which is the more efficient solution created and why.
+In the current section a temporal and spatial analysis will be performed to the created solutions (giving a final O Notation for both time and space complexity) divided into its individual sections in order to build up a fair comparison between the solutions implemented in the Imperative, Functional and Logical paradigms, in order to determine theorically which is the more efficient solution created and why.
 
 ## Traditional Solution 
 
 Where $N$ is the number of coins' values in the second input.
 
-Taking into consideration the relatively simpleness of the developed program there are only two sections that are worth to mention as the remaining variable declaration, first input obtention and validation, as well as the return of the actual answer have both a time and memory complexity of O(1).
+Taking into consideration the relatively simplicity of the developed program there are only two sections that are worth to mention as the remaining variable declaration, first input obtention and validation, as well as the return of the actual answer have both a time and memory complexity of O(1).
 
 These interesting sections emerge from the use of the priority queue. By researching about its implementation, this queue is internally a binary max-heap which <code>push()</code> and <code>pop()</code> functions have a time complexity of $O(log N)$ in the worst case as the addition of an elements puts it at the bottom of the heap requiring it to be evaluated against all the other elements, while the element does the same for the root element. On the other side, their space complexity is $O(1)$ as there is no need for a new object creation. The creation of the queue in comparison takes as higher space complexity $O(N)$ as time $O(N)$, which is ironically better than individual element pushing. The best of its functions is <code>top()</code> as it has a time and space complexity of $O(1)$.
 
@@ -581,7 +581,7 @@ In this case we obtain:
 - top() consultion - $O(1)$
 - answer +1 addition - $O(1)$
 - queue pop() - $O(log N)$
-Which lead to a total of $O(K log N)$ where the wors case equals $O(N log N)$.
+Which lead to a total of $O(K log N)$ where the worst case equals $O(N log N)$.
 
 Based on the addition of both loops which are the most time complex sections of the program the worst and ironically best time complexities are $O(N log N)$ as even if the answer is the first element of the queue, the first loop stays as $O(N log N) +  0(1) = O(N log N)$.
 
@@ -594,7 +594,7 @@ Time: $O(N log N)$
 Space: $O(N)$
 
 ## Functional Paradigm
-For the time and space complexity analysis of the functional solution, each function's complexity will be evaluated individually starting from the functions without any dependance on others, slowly building up until the <code>main</code> function complexity and therefore the program's is achieved.
+For the time and space complexity analysis of the functional solution, each function's complexity will be evaluated individually starting from the functions without any dependence on others, slowly building up until the <code>main</code> function complexity and therefore the program's is achieved.
 
 ### Time Complexity
 
@@ -605,7 +605,7 @@ Standards to take into consideration:
 
 - invert-inner
 
-Recursive call until the first list is empty, which leads to a time complexity depenidng on the elements of the first list which we will determine as $N$ being a $O(N)$
+Recursive call until the first list is empty, which leads to a time complexity depending on the elements of the first list which we will determine as $N$ being a $O(N)$
 
 #### Layer 5
 
@@ -625,7 +625,7 @@ As a recursive function that calls itself as long as the given list contains ele
 
 - inner-larger, inner-lesser and inner-equal
 
-Each of the given recursive functions call itself making comparisons between the pivoys and all the elements of the given list, leading to a time complexity of $O(N)$, multiplied by the usage of is-greater, is-lesser or is-equal, it produces the same result.
+Each of the given recursive functions call itself making comparisons between the pivots and all the elements of the given list, leading to a time complexity of $O(N)$, multiplied by the usage of is-greater, is-lesser or is-equal, it produces the same result.
 
 Only in the case of inner-larger and inner-lesser it ads up only once the use of the invert function, leading to the sum $O(N) + O(B)$ where B is the number of all the elements that fit inside the filtered list, goes at worst at a $O(N)$ based on the original list.
 
@@ -645,7 +645,7 @@ Recursive function that calls itself as long as the first given list still conta
 
 - larger-items and lesser-items 
 
-Recursive function that calls itself as long as the given list still contains elements beig overall $O(N)$, additionally in each validation it uses either is-greater or is-lesser adding up $O(1)$ and at return uses invert $O(N)$ leading to an overall time complexity of $O(2N)$ which reduces to $O(N)$.
+Recursive function that calls itself as long as the given list still contains elements being overall $O(N)$, additionally in each validation it uses either is-greater or is-lesser adding up $O(1)$ and at return uses invert $O(N)$ leading to an overall time complexity of $O(2N)$ which reduces to $O(N)$.
 
 - equal-items
 
@@ -659,10 +659,10 @@ Recursive functions that calls itself as long as the elements of the given list 
 
 - quick-sort
 
-Recursive function that calls itself as long as the given list is empty ($O(N)$) changing each time the pivoting number and calling a double append-lists ($O(2N)$) with an inside larger-items, equal-items and lesser-items ($O(N) + O(N) + O(N)$). This collection of functions being carried up through all the previous analysis leads to an overall time complexity of $O(N log N)$ in the average cases as the collection of inner functions are sequential to one another, leading to in rare cases a worst scenatio of $O(n^2)$ 
+Recursive function that calls itself as long as the given list is empty ($O(N)$) changing each time the pivoting number and calling a double append-lists ($O(2N)$) with an inside larger-items, equal-items and lesser-items ($O(N) + O(N) + O(N)$). This collection of functions being carried up through all the previous analysis leads to an overall time complexity of $O(N log N)$ in the average cases as the collection of inner functions are sequential to one another, leading to in rare cases a worst scenario of $O(n^2)$ 
 
 - coins-aux
-Recursive function that calls itself as long as there are elements in the given list or the sum of the elements of the taken coins list is greater than the sum in the remaning coins list. In the worst case a $O(N)$, in the best scenatio $O(1)$. In each of these comparing cases sum-lists is called twice (one per list) leading to $O(2N)$ and an overall time complexity of $O(N^2)$.
+Recursive function that calls itself as long as there are elements in the given list or the sum of the elements of the taken coins list is greater than the sum in the remaning coins list. In the worst case a $O(N)$, in the best scenario $O(1)$. In each of these comparing cases sum-lists is called twice (one per list) leading to $O(2N)$ and an overall time complexity of $O(N^2)$.
 
 
 #### Layer 1
@@ -698,7 +698,7 @@ Overall space complexity of $O(N)$ as it depending on the collection of elements
 Gives a time complexity of $O(1)$ as only the object flag is created and returned independly of the given parameters.
 
 - invert
-Intermediate function that inherits the actual space complexity of ivert-inner $O(N)$.
+Intermediate function that inherits the actual space complexity of invert-inner $O(N)$.
 
 #### Layer 4
 
@@ -746,7 +746,7 @@ This function requires of the creation of a list for as much elements as the con
 The function creates a mapped list instead of using the given list to apply the given function, leading to a new list with $O(N)$ as its based on the same number of elements.
 
 - coins
-Overally, the usage of number ($O(N)$), in-range ($O(1)$), quick-sort ($O(N log N)$ to $O(N^2)$) and coins-aux ($O(N)$) leads to the average and worst case scenario heavily influenced by the function quick-sort ($O(N log N)$ to $O(N^2)$), contrary to the influence of coins-aux for the time complexity.
+Overall, the usage of number ($O(N)$), in-range ($O(1)$), quick-sort ($O(N log N)$ to $O(N^2)$) and coins-aux ($O(N)$) leads to the average and worst case scenario heavily influenced by the function quick-sort ($O(N log N)$ to $O(N^2)$), contrary to the influence of coins-aux for the time complexity.
 
 ---
 
@@ -780,7 +780,7 @@ Recursive rule with three variants that based on comparisons divide the elements
 
 - quick_sort (KB)
 
-Rule that recursively calls append ($O(n)$), greater_than ($O(N)$), and itself. Considering the amount of recursive calls depend on the first element of each given Greater and Small lists, the average recursion depth approaches $O(log N)$ which in multiplication leads to a range between $O(N log N)$ to $O(N^2)$ fiting once more with the given time complexoty for this sorting algorithm.
+Rule that recursively calls append ($O(n)$), greater_than ($O(N)$), and itself. Considering the amount of recursive calls depend on the first element of each given Greater and Small lists, the average recursion depth approaches $O(log N)$ which in multiplication leads to a range between $O(N log N)$ to $O(N^2)$ fitting once more with the given time complexity for this sorting algorithm.
 
 - coins_aux
 
@@ -792,10 +792,10 @@ As the rule makes use of coins_aux and quick_sort, the general time complexity i
 
 - main
 
-Despite the actual implementation of other validation rules which in case the input is incorrect can reduce the time complexity to $O(N)$, as soon as the inputs are valid leads to the use of coins which inherits a total time complexity of $O(N^2)$ by both quick_sort and its auxiliar function coins_aux.
+Despite the actual implementation of other validation rules which in case the input is incorrect can reduce the time complexity to $O(N)$, as soon as the inputs are valid leads to the use of coins which inherits a total time complexity of $O(N^2)$ by both quick_sort and its auxiliary function coins_aux.
 
 ### Space Complexity
-It is important to notice that Prolog in particular counts with a heap structure which helps to perform backtracking when it is required, and it counts as part the overall space complexity. As some rules are performed N times due to recursion, this continous call will be taken as memory consumption and therefore complexity as well.
+It is important to notice that Prolog in particular counts with a heap structure which helps to perform backtracking when it is required, and it counts as part the overall space complexity. As some rules are performed N times due to recursion, this continuous call will be taken as memory consumption and therefore complexity as well.
 
 - split_to_ints
 
@@ -807,7 +807,7 @@ Space complexity of $O(1)$ as only the flag T is created based on the comparison
 
 - count (KB) and verify count
 
-As verify count is dependant over count, which is a recursive rule that must count all elements of the given list leads similarly to the space complexity of $O(N)$ despites the use range within each element $O(1)$ as its multiplication ends up being the same complexity.
+As verify count is dependant over count, which is a recursive rule that must count all elements of the given list leads similarly to the space complexity of $O(N)$ despite the use range within each element $O(1)$ as its multiplication ends up being the same complexity.
 
 - invert (KB), append (KB) and sum-ele (KB)
 
@@ -819,7 +819,7 @@ Despite the complexity of the rule itself, it creates three lists that together 
 
 - quick_sort (KB)
 
-By making use of recursion with itself (calling itself with the Greater and Less lists), as well as append ($O(N)$) and greater than ($O(N)$), similarly ot the given time complexity, ends up leading to a $O(N log N)$ with tendencies to $O(N^2)$ as several list partitions are created and later appended together.
+By making use of recursion with itself (calling itself with the Greater and Less lists), as well as append ($O(N)$) and greater than ($O(N)$), similarly to the given time complexity, ends up leading to a $O(N log N)$ with tendencies to $O(N^2)$ as several list partitions are created and later appended together.
 
 - coins_aux
 Heavily influenced by the sum of each elements of the lists, giving at worst case the repetition of this process for all elements passing from the remaining coins to the taken coins, the lists and recursive calls of the rule lead up to an space complexity of $O(N)$ as the sum spaces accumulate instead of multiplying each other.
@@ -827,7 +827,7 @@ Heavily influenced by the sum of each elements of the lists, giving at worst cas
 - coins and main
 Taking into consideration the heavy influence of both called rules in coins (quick_sort and coins_aux) and their actual space complexity, as well as the coins influence over the main rule despite the space taken by the input obtention and validation (close to $O(N)$), the actual use of coins leads up directly to a final space complexity of $O(N log N)$ to $O(N^2)$ in the worst and average cases.
 
-Overally the solution implemented in the logical paradigm had a heavy influence of the rule <code>quick_sort</code> for both time and space complexity, rather than the remaining rules of validation or actual sum comparison. 
+Overall the solution implemented in the logical paradigm had a heavy influence of the rule <code>quick_sort</code> for both time and space complexity, rather than the remaining rules of validation or actual sum comparison. 
 
 ---
 
@@ -851,14 +851,34 @@ The Functional and Logical Paradigms were not the most optimal solutions to the 
 Additionally, it is interesting to observe that both Functional and Logical paradigms obtained overally the same time and space complexity, both influenced by their quick sort implementation rather than the remaining characteristics of their implementations.
 
 # Conclusion
+The current evidence did not allow me only to find the most optimal solution for a Codeforces problem among the three implemented in different programming paradigms, but gave me the opportunity to research and comprehend the main characteristics behind these in order to validate their implementation, and appreciate the wide range of tools each paradigm presents and the possible application going further than automatas or recursive functions.
 
+The understanding and application of the Functional and Logical Paradigm had no objective to be a competition one to another, but to understand deeply each implementation, consider the logical modifications their solutions required for the same problem; but most important, be aware of their existence, validity and usage for problems further away from just a class evidence or a competitive programming problem.
+
+The time and space complexity analysis showed remarkably that the use of a specific paradigm is not strictly superior or better than the other, but rather they compose different ways of approach the problem and develop a solution from that perspective; an approach that might end up being more effective for a specific kind of problems or implementations.
+
+Moving forwards, I am interested in researching specific problems where the implementation of these paradigms show a clear improvement against the traditional Imperative Programming, and furthermore practice their logic and thinking process more than their implementation, as changing the way or programming language I use might be relatively easy, but challenging the way I think is the hardest of all challenges.
 
 # References
-Alsbjergvej 10, 9260 Gistrup, Denmark
+
+A. Twins. (s/f). Codeforces.com. https://codeforces.com/problemset/problem/160/A
+
+Bartoníček, J. (2015). PROGRAMMING LANGUAGE PARADIGMS & THE MAIN PRINCIPLES OF OBJECT-ORIENTED PROGRAMMING. CRIS Bulletin, 2014/01, 93–99.
+
 Bhattacharyya, Avi. Cybernetics in C++, River Publishers, 2018. ProQuest Ebook Central, http://ebookcentral.proquest.com/lib/biblitesm/detail.action?docID=5493972.
 
 Bramer, M. (2005). Logic Programming with Prolog. Springer Nature.
 
-Gupta, G. (s/f). CS3671: Programming Languages: Lecture 1. Utdallas.edu. Recuperado el 20 de mayo de 2026, de https://personal.utdallas.edu/~gupta/courses/apl/lec1.html
+freeCodeCamp. (2019, noviembre 12). What exactly is a programming paradigm? Freecodecamp.org. https://www.freecodecamp.org/news/what-exactly-is-a-programming-paradigm/
+
+Gupta, G. (s/f). CS3671: Programming Languages: Lecture 1. Utdallas.edu. https://personal.utdallas.edu/~gupta/courses/apl/lec1.html
+
+Introduction of programming paradigms. (2018, octubre 12). GeeksforGeeks. https://www.geeksforgeeks.org/system-design/introduction-of-programming-paradigms/
+
+Know thy complexities! (s/f). Bigocheatsheet.com. https://www.bigocheatsheet.com/
+
+Paradigms. (s/f). Lmu.edu. https://cs.lmu.edu/~ray/notes/paradigms/
 
 Reade, C. (1989). Elements of Functional Programming (A. D. M. J. van Leeuwen, Ed.). Addison-Wesley Publishers Ltd.
+
+Shuttleworth, M., & Wilson, L. T. (s/f). What is A paradigm? Explorable.com. https://explorable.com/what-is-a-paradigm
