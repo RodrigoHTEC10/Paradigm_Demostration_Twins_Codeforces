@@ -198,69 +198,84 @@ The following explanations will begin by the more complex functions diving them 
 ### Layer 0
 
 - main (layer 0)
+
 Function that holds the complete process mechanism, from the current input obtention and processing to the problem solving logic.
 
 ### Layer 1
 
-- define (layer 1)
+- define 
+
 Built-in function that allow to associate concrete names to values.
 
 
-- string->number (layer 1)
+- string->number 
+
 Built-in function that converts the current given value (string) to a data type (number).
 
 
-- string-split (layer 1)
+- string-split 
+
 Built-in function that allows to divide a string into elements by their white-spaces " ".
 
 
-- map (layer 1)
+- map 
+
 Built-in function that allows to go through a list and apply the given function to all the elements of the list. This is applied over the elements divided from the string of the second input in order to apply the function <code>string->number</code> into each string "5" to conver to number 5.
 
 
-- coins (layer 1)
+- coins 
+
 Created function that returns 0 if the functions <code>number</code>  (giving it the list, number and an empty counter 0), and <code>in-range</code> (giving it the first input) are not meet. Otherwise, call the function <code>coins-aux</code> (giving the list inside the function <code>quick-sort</code> a counter in 0 and an empty list) or return 0.
 
 
 ### Layer 2
 
 - number
+
 Created function that calls itself recursively while taking elements out of the given list (and validating their range with <code>in-range</code>) and increasing the elements count. Only when the list is empty evaluates if the given length and the counter are equal returning true; otherwise returning false.
 
 
 - quick-sort
+
 Created function that based on the first element of the list (called pivot) calls itself recursively over the group of greater and lesser elements of the list than the pivot (<code>larger-items, lesser-items</code>) and appends the given result (<code>append-lists</code>) together with the elements equal to the pivot (<code>equal-items</code>), until the list is empty.
 
 This recursive calling allows to add always the greater, equal and less elements of each element until the list was empty, and integrate all results together creating a sorting list in descending order.
 
 
 - coins-aux
+
 Created function that returns a counter number until the list of coins is empty or the sum of the elements of the created list (initially empty) using <code>sum-list</code> is greater than the sum of the list of the remaining coins. If neither of both condition is accomplished, calls itself recursively moving one elements of the list to the taken coins and increasing the coins counter.
 
 ### Layer 3 
 
 - in-range
+
 Created function that based on a conditional only returns true when the given number is greater or equal to 1 and less or equal to 100.
 
 
 - sum-list
+
 Created function that calls its auxiliar function <code>inner-sum</code> sending a list and a 0 (afterwards the sum of the elements of the list).
 
 
 - append()
+
 Created function that recursively until the first list is empty returns the list b, otherwise calls itself with the remaining elements of the first list (separating the first element). Until all the elements of the first list have not been divided into single elements through the recursive calls, the current elements will join at the start of b all together forming a single list to return.
 
 
 - larger-items, lesser-items and equal-items
+
 Created function that calls the auxiliar function <code>inner-larger, inner-lesser or inner-equal</code>respectively giving an empty list, the current list and the pivot number.
 
 ### Layer 4
 
 - inner-sum
+
 Created function that recursively calls itself adding to the integer parameter the first element of the given list until the list is empty, finally returning such addition.
 
 
 - inner-larger, inner-lesser and inner-equal
+
 Created function that recursively calls itself until the given list is empty returning the second created list; while this condition is met, in each call it puts elements of the original list to the initially empty list if they accomplish the condition given by the inner function <code>is-larger, is lesser or is-equal</code> respectively, otherwise continuing to the recursive call as given.
 
 These functions return a list containing only the greater, lesser or equal elements to the given pivot number.
@@ -274,12 +289,14 @@ These functions return a list containing only the greater, lesser or equal eleme
 - is-equal = (a == b)
 
 - invert
+
 Created function that calls the inner function <code>invert-inner</code> giving the given list and an empty list.
 
 
 ### Layer 6
 
 - invert-inner
+
 Created recursive function that passes all the elements of the original list to the empty list, changing the order of the elements when returning the second list.
 
 
@@ -405,39 +422,51 @@ The implementation of rules with one and several variations is clearly presented
 The rules <code>read_line_to_string</code> and <code>number_string</code> are build-in prolog.
 
 - main
+
 Query desguised as rule that reads the input from console, convert the inputs respectively into numbers and a list of numbers, and validates their range and count before passing to the actual problem solving rule <code>coins</code>. If any of the validations making use of <code>range</code> or <code>verify_count</code> fail, the rule assigns 0 to F as the sequence was interrupted.
 
 - split_to_ints
+
 Rule that divides the given input string into a list and converts all the elements of the list into numbers using <code>number_string</code> through the maping of the list.
 
 - range (KB)
+
 Validated the range of R (1=< R <=100) and assigns T a number as a flag (0 or 1).
 
 - verify_count
+
 Making use of the rule <code>count</code> to validate the amount of elements in the given list L, assigns the flag R a number (0 or 1).
 
 - count (KB)
+
 Function that recursively verifies each element of the given list is within range using the rule <code>range</code>, takes out one element from the list, and increase the counter until the list is empty, the returned counter is only the count if all the elements are within range, being both a counter and a validator (base case assignation).
 
 - coins
+
 Performs a <code>quick_sort</code> to the given list and makes use of the rule <code>coins_aux</code> in order to obtain the deduction of N before returning it.
 
 - quick_sort (KB)
+
 Recursive rule that divides the list into three sections (larger, equal, small) making use of the rule <code>greater_than</code> calls itself in both the larger and smaller lists, until the given list is empty, then joins together in order the elements of the lists as larger + equal + pivot + less using <code>append</code> leading to a given list in descending order passed by the constant X.
 
 - greater_than (KB)
+
 Recursive rule with two variants that based on comparisons with the number X assigns the elements of the original given list Y into three lists (greater, equal and smaller numbers) and returns them in different constants once the original list has been emptied and the greater and smaller list have been inverted <code>invert</code>.
 
 - invert (KB)
+
 Recursive rule with three variants (one that calls the other two) that passes all elements of the original list into an empty list, inverting the elements and returning them into a different constant.
 
 - append (KB)
+
 Recursive rule responsible for joining the elements of two list together in order and return the new list into a different constant.
 
 - coins_aux
+
 Recursive rule that compares the sum of elements in the two given lists (through the rule <code>sum_ele</code>) and returns the counter in C through the constant N once the sum of the list V is greater than the sum of the list L, stopping backtracking and furthermore calls of the rule. Otherwise, passes one element of L into V and increases C by 1 through assignation and call of the function with a new constant.
 
 - sum-ele (KB)
+
 Reccursive rule with three variants (one variant calls the other two) that adds up together the elements of the list by assigning the sum of the elements into the constant S and calls itself until the given list is empty and returns the addition through the constant R.
 
 ## Testing
@@ -575,22 +604,27 @@ Standards to take into consideration:
 #### Layer 6
 
 - invert-inner
+
 Recursive call until the first list is empty, which leads to a time complexity depenidng on the elements of the first list which we will determine as $N$ being a $O(N)$
 
 #### Layer 5
 
 - is-greater, is-lesser & is-equal
+
 Share a time complexity of $O(1)$ as they only evaluate a condition between two numbers and return a flag.
 
 - invert
+
 As invert calls invert-inner, it inherits directly its time complexity of $O(N)$
 
 #### Layer 4
 
 - inner-sum
+
 As a recursive function that calls itself as long as the given list contains elements it can be determined as a time complexity of $O(N)$.
 
 - inner-larger, inner-lesser and inner-equal
+
 Each of the given recursive functions call itself making comparisons between the pivoys and all the elements of the given list, leading to a time complexity of $O(N)$, multiplied by the usage of is-greater, is-lesser or is-equal, it produces the same result.
 
 Only in the case of inner-larger and inner-lesser it ads up only once the use of the invert function, leading to the sum $O(N) + O(B)$ where B is the number of all the elements that fit inside the filtered list, goes at worst at a $O(N)$ based on the original list.
@@ -598,26 +632,33 @@ Only in the case of inner-larger and inner-lesser it ads up only once the use of
 #### Layer 3 
 
 - in-range
+
 Simple function that performs a comparison against two values, leading to a time complexity of $O(1)$ as its only tested with one number at a time.
 
 - sum-list
+
 Intermediate function that calls inner-sum leading to an inherited time complexity of $O(N)$.
 
 - append-lists
+
 Recursive function that calls itself as long as the first given list still contains elements, considering this number of elements as $N$ the complexity gets similar to $O(N)$.
 
 - larger-items and lesser-items 
+
 Recursive function that calls itself as long as the given list still contains elements beig overall $O(N)$, additionally in each validation it uses either is-greater or is-lesser adding up $O(1)$ and at return uses invert $O(N)$ leading to an overall time complexity of $O(2N)$ which reduces to $O(N)$.
 
 - equal-items
+
 Identical functioning than larger-items and lesser-items taking out the use of invert, leading to a similar end result of $O(N)$.
 
 #### Layer 2
 
 - number
+
 Recursive functions that calls itself as long as the elements of the given list are within range (1-100) inclusive, and the list contains elements giving an overall function time of $O(N)$, the actual use of in-range in each validation adds the multiplication of $O(1)$ leading to an overall $O(N)$.
 
 - quick-sort
+
 Recursive function that calls itself as long as the given list is empty ($O(N)$) changing each time the pivoting number and calling a double append-lists ($O(2N)$) with an inside larger-items, equal-items and lesser-items ($O(N) + O(N) + O(N)$). This collection of functions being carried up through all the previous analysis leads to an overall time complexity of $O(N log N)$ in the average cases as the collection of inner functions are sequential to one another, leading to in rare cases a worst scenatio of $O(n^2)$ 
 
 - coins-aux
@@ -627,15 +668,19 @@ Recursive function that calls itself as long as there are elements in the given 
 #### Layer 1
 
 - define and string->number 
+
 Built-in functions with a time complexity of $O(1)$.
 
 - string-split 
+
 Function that turns a given string into a list of strings dividing it by its blank spaces giving a dependency over the total number of elements in the list or original string ($O(N)$)
 
 - map 
+
 Function that applied a given function into each element of a list, leading to a direct $O(N)$.
 
 - coins
+
 As coins make a direct use of number ($O(N)$), in-range ($0(1)$), quick-sort ($O(N log N)$ to $O(N^2)$) and coins-aux ($O(N^2)$) this leads directly to the worst case directed by $O(N^2)$.
 
 All together leading the control of main by the usage of coins, and due that all the functions used there are sequential, the overall time complexity is directed to the worst case of $O(N^2)$.
@@ -705,18 +750,105 @@ Overally, the usage of number ($O(N)$), in-range ($O(1)$), quick-sort ($O(N log 
 
 ---
 
-Time: $O(N log N) to $O(N^2)$
+Time: $O(N log N)$ to $O(N^2)$
 
-Space: $O(N log N) to $O(N^2)$
+Space: $O(N log N)$ to $O(N^2)$
 
 ## Logical Paradigm
 Similarly to the previous paradigm' analysis, the following two sections will be divided by the rules of the solution implemented in Prolog, paying special attention to the recursive calls of each rule and the possible branches the default backtracking may analyze.
 
 ### Time Complexity
+- split_to_ints
 
+By making use of a string separation into a list ($O(N)$) and the afterwards application of a rule over all the elements of it through the use of mapping ($O(N)$) leads to a collected addition of $O(N)+O(N) = O(N)$.
+
+- range (KB)
+
+As range is only a simple validation of a value with one call, it has a time complexity of $O(1)$.
+
+- count (KB) and verify-count
+
+Recursive rule that counts the elements of the list and validates their range ($O(1)$). As it calls itself as many times as elements of the list, its time complexity is $O(N)$.
+
+- invert (KB), append (KB) and sum-ele (KB)
+
+Recursive rules that depend on the elements of the given lists (invert in case of only the first list) to perform different processed, leading to a time complexity of $O(N)$ as all elements must be passed. 
+
+- greater_than (KB)
+
+Recursive rule with three variants that based on comparisons divide the elements of the list into three lists depending on the pivot, leading to a maximum call of $O(n)$ which are as much elements as available.
+
+- quick_sort (KB)
+
+Rule that recursively calls append ($O(n)$), greater_than ($O(N)$), and itself. Considering the amount of recursive calls depend on the first element of each given Greater and Small lists, the average recursion depth approaches $O(log N)$ which in multiplication leads to a range between $O(N log N)$ to $O(N^2)$ fiting once more with the given time complexoty for this sorting algorithm.
+
+- coins_aux
+
+Recursive rule that occurs at most as elements in the given list in the worst scenario ($O(N)$) for the sum comparison processes which uses the rule of sum-lists each of $O(N)$ leading to a multiplication that can lead to $O(N^2)$ considering these rules are called in each call two times and their individual time complexity.
+
+- coins
+
+As the rule makes use of coins_aux and quick_sort, the general time complexity is controlled by both rules leading to a greater tendency towards $O(N^2)$
+
+- main
+
+Despite the actual implementation of other validation rules which in case the input is incorrect can reduce the time complexity to $O(N)$, as soon as the inputs are valid leads to the use of coins which inherits a total time complexity of $O(N^2)$ by both quick_sort and its auxiliar function coins_aux.
 
 ### Space Complexity
+It is important to notice that Prolog in particular counts with a heap structure which helps to perform backtracking when it is required, and it counts as part the overall space complexity. As some rules are performed N times due to recursion, this continous call will be taken as memory consumption and therefore complexity as well.
 
+- split_to_ints
+
+Similarly to its time complexity analysis as the call is handled only one time and two lists are created for the purpose or returning a list of numbers instead of a string, this rule has a space complexity of $O(2N) = O(N)$.
+
+- range (KB)
+
+Space complexity of $O(1)$ as only the flag T is created based on the comparisons made to the R constant.
+
+- count (KB) and verify count
+
+As verify count is dependant over count, which is a recursive rule that must count all elements of the given list leads similarly to the space complexity of $O(N)$ despites the use range within each element $O(1)$ as its multiplication ends up being the same complexity.
+
+- invert (KB), append (KB) and sum-ele (KB)
+
+All three rules traverse recursively all given list and create a result or list based on its element, leading similarly to the time complexity a space complexity of $O(N)$.
+
+- greater_than (KB)
+
+Despite the complexity of the rule itself, it creates three lists that together form as much elements as the original list, therefore creating a space complexity of $O(N)$. 
+
+- quick_sort (KB)
+
+By making use of recursion with itself (calling itself with the Greater and Less lists), as well as append ($O(N)$) and greater than ($O(N)$), similarly ot the given time complexity, ends up leading to a $O(N log N)$ with tendencies to $O(N^2)$ as several list partitions are created and later appended together.
+
+- coins_aux
+Heavily influenced by the sum of each elements of the lists, giving at worst case the repetition of this process for all elements passing from the remaining coins to the taken coins, the lists and recursive calls of the rule lead up to an space complexity of $O(N)$ as the sum spaces accumulate instead of multiplying each other.
+
+- coins and main
+Taking into consideration the heavy influence of both called rules in coins (quick_sort and coins_aux) and their actual space complexity, as well as the coins influence over the main rule despite the space taken by the input obtention and validation (close to $O(N)$), the actual use of coins leads up directly to a final space complexity of $O(N log N)$ to $O(N^2)$ in the worst and average cases.
+
+Overally the solution implemented in the logical paradigm had a heavy influence of the rule <code>quick_sort</code> for both time and space complexity, rather than the remaining rules of validation or actual sum comparison. 
+
+---
+
+Time: $O(N^2)$
+
+Space: $O(N log N)$ - $O(N^2)$
+
+
+## Analysis Results
+
+| Paradigm   | Average Time Complexity | Worst Time Complexity | Average Space Complexity | Worst Space Complexity |
+| ---------- | ----------------------- | --------------------- | ------------------------ | ---------------------- |
+| Imperative | O(N\log N)              | O(N\log N)            | O(N)                     | O(N)                   |
+| Functional | O(N^2)                  | O(N^2)                | O(N\log N)               | O(N^2)                 |
+| Logical    | O(N^2)                  | O(N^2)                | O(N\log N)               | O(N^2)                 |
+
+Based on the results from the individually performed analysis to each of the implemented solutions, the most efficient solution for the problem 160 A. Twins was the developed under the Imperative Paradigm, not because of the paradigm itself, but rather for the advantages its use provides to the techniques implemented in its solution and the data structures used as support (the priority queue specifically).
+
+The Functional and Logical Paradigms were not the most optimal solutions to the given problem, but are equally capable to arrive at the same result based on the same inputs as parameters, showing both their great capacity to adapt to multiple types of problems. The key for their use is more focused on adapting a different logic and make use of the available tools, as for example, the functional solution was easier to build than the logical one thanks to the relatively easy abstraction and substitution of intermediate and dependant functions.
+
+Additionally, it is interesting to observe that both Functional and Logical paradigms obtained overally the same time and space complexity, both influenced by their quick sort implementation rather than the remaining characteristics of their implementations.
 
 # Conclusion
 
