@@ -192,8 +192,9 @@ The usage of the functional paradigm requires rather than a linear explanation o
 
 The following explanations will begin by the more complex functions dividing them slowly into their most basic ones as the following diagram depicts.
 
-
-*[Insert here model image]*
+<div align=center>
+<img width="6526" height="2717" alt="functional_model_evidence" src="https://github.com/user-attachments/assets/6bdeb13a-24bf-4b97-bc54-85c387579248" />
+</div>
 
 ### Layer 0
 
@@ -392,9 +393,9 @@ File: logical/prolog_solution.pl
 
 In the presented section, the composition of the file <code>prolog_solution.pl</code> will be divided into the three main elements of Logic Paradigm in order to demonstrate its theoretical use during the development of the solution, same concept is validated by the following presented model.
 
-
-*[Add here the model of the logical paradigm]*
-
+<div align=center>
+<img width="6080" height="3343" alt="logical_model_evidence" src="https://github.com/user-attachments/assets/b3cb1e8a-aff0-4031-a4eb-d199ff786678" />
+</div>
 
 Note: When talking about the rules (which may have different versions depending on their parameters) the name convention "name/number" will be taken, where the number represents the number of rules under the same name.
 
