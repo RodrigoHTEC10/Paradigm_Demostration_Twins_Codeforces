@@ -730,7 +730,7 @@ As these are intermediate functions, they inherit the time complexity of inner-l
 Its recursion through the elements of the given list in order to confirm their number equals an space of $O(N)$.
 
 - quick-sort
-The collection of all the time complexities from append ($O(N)$), and the sequential usage of larger-items, lesser-items and equal-items leads similarly to time complexity to a time of $O(log N)$ which considering the recursive nature of quick-sort depending on the elements of the original list $O(N)$ leads to an average space complexity of $O(N log N)$ and a worst case of $O(N^2)$.
+The collection of all the time complexities from append ( $O(N)$ ), and the sequential usage of larger-items, lesser-items and equal-items leads similarly to time complexity to a time of $O(log N)$ which considering the recursive nature of quick-sort depending on the elements of the original list $O(N)$ leads to an average space complexity of $O(N log N)$ and a worst case of $O(N^2)$.
 
 This curiously aligns with the average and worst time complexity of the quick-sort implementations shown in the Big-O-Cheapsheet.
 
