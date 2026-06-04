@@ -139,7 +139,10 @@ This file was developed in order to pass all the automatic tests in Codeforces a
 
 The proof of the current solution acceptance is shown in the following images:
 
-*[Screenshot of current codeforces acceptance.]*
+<div align=center>
+ <img width="1119" height="133" alt="Screenshot 2026-05-22 145843" src="https://github.com/user-attachments/assets/eb8141fa-6455-43a1-a288-2e8bea7ebe58" />
+ <img width="1272" height="829" alt="Screenshot 2026-05-22 145824" src="https://github.com/user-attachments/assets/f15bf82d-2e1a-4a12-a239-c8f02e144cd1" />
+</div>
 
 Logic:
 1. Declaration of variables to use. (integers: <code>num, total, enough, answer, </code>. booleans: <code>approvedNum, approvedEle</code>)
