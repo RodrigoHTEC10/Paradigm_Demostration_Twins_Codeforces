@@ -32,7 +32,7 @@ As you woke up, you found Mom's coins and read her note. "But why split the mone
 
 ### Input
 
-The first line contains integer $ n (1 ≤ n ≤ 100) $ — the number of coins. The second line contains a sequence of $ n $ integers $a1, a2, ..., an (1 ≤ ai ≤ 100)$ — the coins' values. All numbers are separated with spaces.
+The first line contains integer $n(1≤n≤100)$ — the number of coins. The second line contains a sequence of $n$ integers $a1,a2,...,an(1≤ai≤100)$ — the coins' values. All numbers are separated with spaces.
 
 ### Output
 In the single line print the single number — the minimum needed number of coins.
@@ -747,7 +747,7 @@ This function requires of the creation of a list for as much elements as the con
 The function creates a mapped list instead of using the given list to apply the given function, leading to a new list with $O(N)$ as its based on the same number of elements.
 
 - coins
-Overall, the usage of number ($O(N)$), in-range ($O(1)$), quick-sort ($O(N log N)$ to $O(N^2)$) and coins-aux ($O(N)$) leads to the average and worst case scenario heavily influenced by the function quick-sort ($O(N log N)$ to $O(N^2)$), contrary to the influence of coins-aux for the time complexity.
+Overall, the usage of number ( $O(N)$ ), in-range ( $O(1)$ ), quick-sort ( $O(NlogN)$ to $O(N^2)$ ) and coins-aux ( $O(N)$ ) leads to the average and worst case scenario heavily influenced by the function quick-sort ( $O(NlogN)$ to $O(N^2)$ ), contrary to the influence of coins-aux for the time complexity.
 
 ---
 
@@ -761,7 +761,7 @@ Similarly to the previous paradigm' analysis, the following two sections will be
 ### Time Complexity
 - split_to_ints
 
-By making use of a string separation into a list ($O(N)$) and the afterwards application of a rule over all the elements of it through the use of mapping ($O(N)$) leads to a collected addition of $O(N)+O(N) = O(N)$.
+By making use of a string separation into a list ( $O(N)$ ) and the afterwards application of a rule over all the elements of it through the use of mapping ( $O(N)$ ) leads to a collected addition of $O(N)+O(N) = O(N)$.
 
 - range (KB)
 
@@ -781,11 +781,11 @@ Recursive rule with three variants that based on comparisons divide the elements
 
 - quick_sort (KB)
 
-Rule that recursively calls append ($O(n)$), greater_than ($O(N)$), and itself. Considering the amount of recursive calls depend on the first element of each given Greater and Small lists, the average recursion depth approaches $O(log N)$ which in multiplication leads to a range between $O(N log N)$ to $O(N^2)$ fitting once more with the given time complexity for this sorting algorithm.
+Rule that recursively calls append ( $O(n)$ ), greater_than ( $O(N)$ ), and itself. Considering the amount of recursive calls depend on the first element of each given Greater and Small lists, the average recursion depth approaches $O(log N)$ which in multiplication leads to a range between $O(N log N)$ to $O(N^2)$ fitting once more with the given time complexity for this sorting algorithm.
 
 - coins_aux
 
-Recursive rule that occurs at most as elements in the given list in the worst scenario ($O(N)$) for the sum comparison processes which uses the rule of sum-lists each of $O(N)$ leading to a multiplication that can lead to $O(N^2)$ considering these rules are called in each call two times and their individual time complexity.
+Recursive rule that occurs at most as elements in the given list in the worst scenario ( $O(N)$ ) for the sum comparison processes which uses the rule of sum-lists each of $O(N)$ leading to a multiplication that can lead to $O(N^2)$ considering these rules are called in each call two times and their individual time complexity.
 
 - coins
 
@@ -820,13 +820,13 @@ Despite the complexity of the rule itself, it creates three lists that together 
 
 - quick_sort (KB)
 
-By making use of recursion with itself (calling itself with the Greater and Less lists), as well as append ($O(N)$) and greater than ($O(N)$), similarly to the given time complexity, ends up leading to a $O(N log N)$ with tendencies to $O(N^2)$ as several list partitions are created and later appended together.
+By making use of recursion with itself (calling itself with the Greater and Less lists), as well as append ( $O(N)$ ) and greater than ( $O(N)$ ), similarly to the given time complexity, ends up leading to a $O(N log N)$ with tendencies to $O(N^2)$ as several list partitions are created and later appended together.
 
 - coins_aux
 Heavily influenced by the sum of each elements of the lists, giving at worst case the repetition of this process for all elements passing from the remaining coins to the taken coins, the lists and recursive calls of the rule lead up to an space complexity of $O(N)$ as the sum spaces accumulate instead of multiplying each other.
 
 - coins and main
-Taking into consideration the heavy influence of both called rules in coins (quick_sort and coins_aux) and their actual space complexity, as well as the coins influence over the main rule despite the space taken by the input obtention and validation (close to $O(N)$), the actual use of coins leads up directly to a final space complexity of $O(N log N)$ to $O(N^2)$ in the worst and average cases.
+Taking into consideration the heavy influence of both called rules in coins (quick_sort and coins_aux) and their actual space complexity, as well as the coins influence over the main rule despite the space taken by the input obtention and validation (close to $O(N)$ ), the actual use of coins leads up directly to a final space complexity of $O(N log N)$ to $O(N^2)$ in the worst and average cases.
 
 Overall the solution implemented in the logical paradigm had a heavy influence of the rule <code>quick_sort</code> for both time and space complexity, rather than the remaining rules of validation or actual sum comparison. 
 
@@ -841,9 +841,9 @@ Space: $O(N log N)$ - $O(N^2)$
 
 | Paradigm   | Average Time Complexity | Worst Time Complexity | Average Space Complexity | Worst Space Complexity |
 | ---------- | ----------------------- | --------------------- | ------------------------ | ---------------------- |
-| Imperative | O(N\log N)              | O(N\log N)            | O(N)                     | O(N)                   |
-| Functional | O(N^2)                  | O(N^2)                | O(N\log N)               | O(N^2)                 |
-| Logical    | O(N^2)                  | O(N^2)                | O(N\log N)               | O(N^2)                 |
+| Imperative | $O(N\log N)$              | $O(N log N)$            | $O(N)$                     | $O(N)$                   |
+| Functional | $O(N^2)$                  | $O(N^2)$                | $O(N log N)$              | $O(N^2)$                 |
+| Logical    | $O(N^2)$                  | $O(N^2)$                | $O(N log N)$               | $O(N^2)$                 |
 
 Based on the results from the individually performed analysis to each of the implemented solutions, the most efficient solution for the problem 160 A. Twins was the developed under the Imperative Paradigm, not because of the paradigm itself, but rather for the advantages its use provides to the techniques implemented in its solution and the data structures used as support (the priority queue specifically).
 
