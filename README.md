@@ -772,7 +772,7 @@ As range is only a simple validation of a value with one call, it has a time com
 
 - count (KB) and verify-count
 
-Recursive rule that counts the elements of the list and validates their range ($O(1)$). As it calls itself as many times as elements of the list, its time complexity is $O(N)$.
+Recursive rule that counts the elements of the list and validates their range ( $O(1)$ ). As it calls itself as many times as elements of the list, its time complexity is $O(N)$.
 
 - invert (KB), append (KB) and sum-ele (KB)
 
