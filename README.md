@@ -663,7 +663,7 @@ Recursive functions that calls itself as long as the elements of the given list 
 
 - quick-sort
 
-Recursive function that calls itself as long as the given list is empty ($O(N)$) changing each time the pivoting number and calling a double append-lists ($O(2N)$) with an inside larger-items, equal-items and lesser-items ($O(N) + O(N) + O(N)$). This collection of functions being carried up through all the previous analysis leads to an overall time complexity of $O(N log N)$ in the average cases as the collection of inner functions are sequential to one another, leading to in rare cases a worst scenario of $O(n^2)$ 
+Recursive function that calls itself as long as the given list is empty ( $O(N)$ ) changing each time the pivoting number and calling a double append-lists ( $O(2N)$ ) with an inside larger-items, equal-items and lesser-items ( $O(N) + O(N) + O(N)$ ). This collection of functions being carried up through all the previous analysis leads to an overall time complexity of $O(N log N)$ in the average cases as the collection of inner functions are sequential to one another, leading to in rare cases a worst scenario of $O(n^2)$ 
 
 - coins-aux
 Recursive function that calls itself as long as there are elements in the given list or the sum of the elements of the taken coins list is greater than the sum in the remaning coins list. In the worst case a $O(N)$, in the best scenario $O(1)$. In each of these comparing cases sum-lists is called twice (one per list) leading to $O(2N)$ and an overall time complexity of $O(N^2)$.
@@ -677,7 +677,7 @@ Built-in functions with a time complexity of $O(1)$.
 
 - string-split 
 
-Function that turns a given string into a list of strings dividing it by its blank spaces giving a dependency over the total number of elements in the list or original string ($O(N)$)
+Function that turns a given string into a list of strings dividing it by its blank spaces giving a dependency over the total number of elements in the list or original string ( $O(N)$ )
 
 - map 
 
@@ -685,7 +685,7 @@ Function that applied a given function into each element of a list, leading to a
 
 - coins
 
-As coins make a direct use of number ($O(N)$), in-range ($0(1)$), quick-sort ($O(N log N)$ to $O(N^2)$) and coins-aux ($O(N^2)$) this leads directly to the worst case directed by $O(N^2)$.
+As coins make a direct use of number ( $O(N)$ ), in-range ( $0(1)$ ), quick-sort ( $O(N log N)$ to $O(N^2)$ ) and coins-aux ( $O(N^2)$ ) this leads directly to the worst case directed by $O(N^2)$.
 
 All together leading the control of main by the usage of coins, and due that all the functions used there are sequential, the overall time complexity is directed to the worst case of $O(N^2)$.
 
